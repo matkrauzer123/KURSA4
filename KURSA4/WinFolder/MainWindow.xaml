@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Открытие" Height="1030" ResizeMode="NoResize" Width="1930" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Background="#FF210D6B">
-        <Button x:Name="BOpen" Content="Открыть кассу" HorizontalAlignment="Left" Height="216" Margin="747,549,0,0" VerticalAlignment="Top" Width="585" FontSize="36" FontWeight="Bold" FontFamily="Arial Black" Background="#FF897CC8" Click="BOpen_Click"/>
+        <Button x:Name="BOpen" Content="Открыть кассу" HorizontalAlignment="Left" Height="216" Margin="624,0,0,0" VerticalAlignment="Center" Width="585" FontSize="36" FontWeight="Bold" FontFamily="Arial Black" Background="#FF897CC8" Click="BOpen_Click"/>
 
     </Grid>
 </Window>
