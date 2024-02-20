@@ -1,0 +1,34 @@
+﻿USE [zz]
+GO
+/****** Object:  Table [dbo].[Admin]    Script Date: 20.02.2024 15:01:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Admin](
+	[IdAdmin] [int] IDENTITY(1,1) NOT NULL,
+	[NameAdmin] [nvarchar](50) NULL,
+	[PasswordAdmin] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Result]    Script Date: 20.02.2024 15:01:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Result](
+	[ResultOfDay] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tools]    Script Date: 20.02.2024 15:01:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tools](
+	[IdTools] [int] IDENTITY(1,1) NOT NULL,
+	[NameTools] [nvarchar](50) NULL,
+	[PriceTools] [nvarchar](50) NULL,
+	[StockTools] [int] NULL
+) ON [PRIMARY]
+GO
