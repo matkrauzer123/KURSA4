@@ -29,6 +29,7 @@ namespace KURSA4.WinFolder
         DataBase dataBase = new DataBase(); 
         private void BCurrect_Click(object sender, RoutedEventArgs e)
         {
+
             var passUser = PBPassword.Password;
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();

@@ -109,7 +109,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="WinFolder\SDS_MAX_40X_1000.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,9 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ImagesFolder\SDS_MAX_40X_1000.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="WinFolder\logo_310.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="WinFolder\SDS_MAX_40X_1000.png" />
