@@ -33,7 +33,7 @@ namespace KURSA4.WinFolder
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            string query = $"select   password from Admin where  password = '{passUser}'";
+            string query = $"select   PasswordAdmin from Admin where   PasswordAdmin = '{passUser}'";
             SqlCommand command = new SqlCommand(query, dataBase.GetConnection());
             sqlDataAdapter.SelectCommand = command;
             sqlDataAdapter.Fill(dt);

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TopCar;
 
 namespace KURSA4.WinFolder
 {
@@ -23,7 +26,8 @@ namespace KURSA4.WinFolder
         {
             InitializeComponent();
         }
-
+        static double price;
+        DataBase database = new DataBase();
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
             LSelect.Content = MIStroitOtdelInstrument.Header;
@@ -93,6 +97,58 @@ namespace KURSA4.WinFolder
         private void MIReshInstrument_Click(object sender, RoutedEventArgs e)
         {
             LSelect.Content = MIReshInstrument.Header;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void B40X1000_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='1'";
+            SqlCommand sqlCommand = new SqlCommand(query,database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+             int stock1 = (int)sqlCommand.ExecuteScalar();
+          
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK,MessageBoxImage.Error) ;
+            }
+           
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+               query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Буры SDS MAX 40X1000','8319','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand (query,database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+
+                price += 8319;
+                LPrice.Content = price;
+
+            }
+           
+           
+      
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void B40X1000_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿USE [zz]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 20.02.2024 15:01:15 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 27.02.2024 15:43:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[Admin](
 	[PasswordAdmin] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Result]    Script Date: 20.02.2024 15:01:15 ******/
+/****** Object:  Table [dbo].[Result]    Script Date: 27.02.2024 15:43:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Result](
 	[ResultOfDay] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tools]    Script Date: 20.02.2024 15:01:15 ******/
+/****** Object:  Table [dbo].[Tools]    Script Date: 27.02.2024 15:43:22 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,5 +30,17 @@ CREATE TABLE [dbo].[Tools](
 	[NameTools] [nvarchar](50) NULL,
 	[PriceTools] [nvarchar](50) NULL,
 	[StockTools] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Trash]    Script Date: 27.02.2024 15:43:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Trash](
+	[NameTrash] [nvarchar](50) NULL,
+	[PriceTrash] [int] NULL,
+	[StockTrash] [nvarchar](50) NULL,
+	[IdTrash] [int] IDENTITY(1,1) NOT NULL
 ) ON [PRIMARY]
 GO

@@ -61,6 +61,10 @@
     <Compile Include="WinFolder\WinOpen.xaml.cs">
       <DependentUpon>WinOpen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Ress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinFolder\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,15 +109,25 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="WinFolder\SDS_MAX_40X_1000.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WinFolder\logo_310.png" />
+    <Resource Include="ImagesFolder\logo_310.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Base.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\SDS_MAX_40X_1000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WinFolder\logo_310.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WinFolder\SDS_MAX_40X_1000.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
