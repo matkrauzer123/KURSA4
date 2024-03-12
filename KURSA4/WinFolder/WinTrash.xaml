@@ -1,0 +1,22 @@
+﻿<Window x:Class="KURSA4.WinFolder.Trash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KURSA4.WinFolder"
+        mc:Ignorable="d"
+        Title="Trash" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+    <Grid Background="#FF210D6B">
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" SelectionChanged="DGTrash_SelectionChanged" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="False">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-720"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+
+    </Grid>
+</Window>

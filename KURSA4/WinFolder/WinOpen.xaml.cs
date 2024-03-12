@@ -36,12 +36,12 @@ namespace KURSA4.WinFolder
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
-            LSelect.Content= string.Empty;
+            LSelect.Content = string.Empty;
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content= MISverlInstrument.Header;
+            LSelect.Content = MISverlInstrument.Header;
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace KURSA4.WinFolder
 
         private void MIRashodMaterial_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content= MIRashodMaterial.Header;
+            LSelect.Content = MIRashodMaterial.Header;
         }
 
         private void MIOsnastka_Click(object sender, RoutedEventArgs e)
@@ -81,12 +81,12 @@ namespace KURSA4.WinFolder
 
         private void MISadInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content =MISadInstrument.Header;
+            LSelect.Content = MISadInstrument.Header;
         }
 
         private void MIZashita_Click(object sender, RoutedEventArgs e)
         {
-           LSelect.Content =MIZashita.Header;
+            LSelect.Content = MIZashita.Header;
         }
 
         private void MIOther_Click(object sender, RoutedEventArgs e)
@@ -109,26 +109,26 @@ namespace KURSA4.WinFolder
             database.sqlOpen();
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             string query = "Select StockTools  from Tools  where IdTools='1'";
-            SqlCommand sqlCommand = new SqlCommand(query,database.GetConnection());
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
             sqlDataAdapter.SelectCommand = sqlCommand;
-             int stock1 = (int)sqlCommand.ExecuteScalar();
-          
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
             if (stock1 == 0)
             {
-                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK,MessageBoxImage.Error) ;
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-           
+
             else
             {
                 stock1--;
                 DataTable dataTable = new DataTable();
-                query = $"update  Tools set StockTools ='{stock1}'";
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='1'";
                 SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-               query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Буры SDS MAX 40X1000','8319','{stock1}')";
-                SqlCommand sqlTrash = new SqlCommand (query,database.GetConnection());
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Буры SDS MAX 40X1000','8319','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
 
@@ -136,9 +136,9 @@ namespace KURSA4.WinFolder
                 LPrice.Content = price;
 
             }
-           
-           
-      
+
+
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -150,5 +150,81 @@ namespace KURSA4.WinFolder
         {
 
         }
+
+        private void B40X600_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='2'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='2'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Буры SDS MAX 40X600','5664','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+
+                price += 5664;
+                LPrice.Content = price;
+            }
+        }
+
+        private void BRulet_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='3'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='3'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('РУЛЕТКА VERTEXTOOLS ','471','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+
+                price += 471;
+                LPrice.Content = price;
+            }
+        }
+
+        private void BCheck_Click(object sender, RoutedEventArgs e)
+        {
+            Trash trash = new Trash();
+            trash.Show();
+            Close();
+        }
+
+        
+        
     }
 }
