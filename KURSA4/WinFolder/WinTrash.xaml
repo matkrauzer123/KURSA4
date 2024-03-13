@@ -7,7 +7,28 @@
         mc:Ignorable="d"
         Title="Trash" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid Background="#FF210D6B">
-        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" SelectionChanged="DGTrash_SelectionChanged" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="False">
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <!-- Другие столбцы из вашего DataTable -->
+
+                <!-- Колонка с кнопкой "Удалить" -->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить" Click="DeleteButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Колонка с кнопкой "Добавить" -->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Добавить" Click="AddButton_Click" FontSize="14" FontFamily="Cambria Math" FontWeight="Bold" AutomationProperties.IsRowHeader="True" AutomationProperties.IsColumnHeader="True" AutomationProperties.IsOffscreenBehavior="FromClip"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -16,6 +37,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </DataGrid.RenderTransform>
+            
         </DataGrid>
 
     </Grid>

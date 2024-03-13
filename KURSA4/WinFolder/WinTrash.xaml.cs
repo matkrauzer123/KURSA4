@@ -25,22 +25,36 @@ namespace KURSA4.WinFolder
         public Trash()
         {
             InitializeComponent();
-        }
-        DataBase dataBase = new DataBase();
 
-        private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        }
+      
+        DataBase dataBase = new DataBase();
+        DataTable dt = new DataTable();
+        SqlDataAdapter adapter ;
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            Button senderButton = sender as Button;
+            DataRowView dataRowView = senderButton.DataContext as DataRowView;
+            dt.Rows.Remove(dataRowView.Row);
+            
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataRow newRow = dt.NewRow();
+            // Заполните новую строку данными на ваш выбор
+            dt.Rows.Add(newRow);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter("Select NameTrash,PriceTrash from Trash", dataBase.GetConnection());
+            adapter = new SqlDataAdapter("Select NameTrash,PriceTrash from Trash", dataBase.GetConnection());
 
-            
             adapter.Fill(dt);         
             DGTrash.ItemsSource = dt.DefaultView;
+              
         }
+
+     
     }
 }
