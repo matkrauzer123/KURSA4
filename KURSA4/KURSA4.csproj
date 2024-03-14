@@ -55,6 +55,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WinFolder\WinAbrazMaterial.xaml.cs">
+      <DependentUpon>WinAbrazMaterial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinMaliarInstrument.xaml.cs">
+      <DependentUpon>WinMaliarInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinOsnastka.xaml.cs">
+      <DependentUpon>WinOsnastka.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinOther.xaml.cs">
+      <DependentUpon>WinOther.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinRashodMaterial.xaml.cs">
+      <DependentUpon>WinRashodMaterial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinReshInstrument.xaml.cs">
+      <DependentUpon>WinReshInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinRuchInstrument.xaml.cs">
+      <DependentUpon>WinRuchInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinSadInstrument.xaml.cs">
+      <DependentUpon>WinSadInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinSlesarInstrument.xaml.cs">
+      <DependentUpon>WinSlesarInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinStroitOtdelInstrument.xaml.cs">
+      <DependentUpon>WinStroitOtdelInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinSvarOborudovanie.xaml.cs">
+      <DependentUpon>WinSvarOborudovanie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinSverlInstrument.xaml.cs">
+      <DependentUpon>WinSverlInstrument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinFolder\WinTrash.xaml.cs">
       <DependentUpon>WinTrash.xaml</DependentUpon>
     </Compile>
@@ -63,6 +99,9 @@
     </Compile>
     <Compile Include="WinFolder\WinOpen.xaml.cs">
       <DependentUpon>WinOpen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFolder\WinZashita.xaml.cs">
+      <DependentUpon>WinZashita.xaml</DependentUpon>
     </Compile>
     <Page Include="Ress.xaml">
       <SubType>Designer</SubType>
@@ -81,6 +120,54 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WinFolder\WinAbrazMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinMaliarInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinOsnastka.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinOther.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinRashodMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinReshInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinRuchInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinSadInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinSlesarInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinStroitOtdelInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinSvarOborudovanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinSverlInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinFolder\WinTrash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WinFolder\WinOpen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFolder\WinZashita.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

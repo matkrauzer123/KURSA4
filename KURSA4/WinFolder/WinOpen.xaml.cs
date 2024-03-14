@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,7 +27,7 @@ namespace KURSA4.WinFolder
         {
             InitializeComponent();
         }
-        static double price;
+        static int price;
         DataBase database = new DataBase();
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
@@ -35,13 +36,28 @@ namespace KURSA4.WinFolder
 
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
+            database.sqlOpen();
+            string  query = $"select  PriceUser FROM PriceUsers ";
+            SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+           SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();    
+            sqlDataAdapter.SelectCommand = sqlprice;
+           var a = sqlprice.ExecuteScalar();
+           price = Convert.ToInt32(a);  
+            if (price!=0)
+            {
+                LPrice.Content = price;
+            }
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
             LSelect.Content = string.Empty;
+            database.sqlClose();
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
             LSelect.Content = MISverlInstrument.Header;
+            WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
+            winSverlInstrument.ShowDialog();
+            Close();
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
@@ -131,8 +147,17 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUsers set PriceUser =PriceUser+8319";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUser FROM PriceUsers";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
 
-                price += 8319;
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
                 LPrice.Content = price;
 
             }
@@ -178,8 +203,17 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUsers set PriceUser =PriceUser+5664";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUser FROM PriceUsers";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
 
-                price += 5664;
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
                 LPrice.Content = price;
             }
         }
@@ -211,8 +245,17 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUsers set PriceUser =PriceUser+471";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUser FROM PriceUsers";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
 
-                price += 471;
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
                 LPrice.Content = price;
             }
         }
