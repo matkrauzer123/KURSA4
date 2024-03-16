@@ -31,43 +31,57 @@ namespace KURSA4.WinFolder
 
         private void MIKatalog_Click(object sender, RoutedEventArgs e)
         {
-
+            WinOpen winOpen = new WinOpen();
+            winOpen.ShowDialog();
+            Close();
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+            WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
+            winSverlInstrument.ShowDialog();
+            Close();
         }
 
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
 
-          
+          WinStroitOtdelInstrument winStroitOtdelInstrument = new WinStroitOtdelInstrument();
+            winStroitOtdelInstrument.ShowDialog();
+            Close();
         }
 
         private void MIReshInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+            WinReshInstrument winReshInstrument = new WinReshInstrument();
+            winReshInstrument.ShowDialog();
+            Close();
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+            WinRuchInstrument winRuchInstrument = new WinRuchInstrument();
+            winRuchInstrument.ShowDialog();
+            Close();
         }
 
         private void MIMaliarInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+            WinMaliarInstrument winMaliarInstrument = new WinMaliarInstrument();
+            winMaliarInstrument.ShowDialog();
+            Close();
         }
 
         private void MISlesarInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+            WinSlesarInstrument winSlesarInstrument = new WinSlesarInstrument();
+            winSlesarInstrument.ShowDialog();
+            Close();
         }
 
         private void MISvarOborudovanie_Click(object sender, RoutedEventArgs e)
         {
-
+            WinSvarOborudovanie winSvarOborudovanie = new WinSvarOborudovanie();    
         }
 
         private void MIRashodMaterial_Click(object sender, RoutedEventArgs e)
@@ -97,7 +111,7 @@ namespace KURSA4.WinFolder
 
         private void MIAbrazMaterial_Click(object sender, RoutedEventArgs e)
         {
-
+            //
         }
 
         private void BCheck_Click(object sender, RoutedEventArgs e)

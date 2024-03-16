@@ -31,7 +31,9 @@ namespace KURSA4.WinFolder
         DataBase database = new DataBase();
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIStroitOtdelInstrument.Header;
+           WinStroitOtdelInstrument winStroitOtdelInstrument = new WinStroitOtdelInstrument();
+            winStroitOtdelInstrument.ShowDialog();
+            Close();
         }
 
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
@@ -48,13 +50,13 @@ namespace KURSA4.WinFolder
                 LPrice.Content = price;
             }
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
-            LSelect.Content = string.Empty;
+         
             database.sqlClose();
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MISverlInstrument.Header;
+           
             WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
             winSverlInstrument.ShowDialog();
             Close();
@@ -62,57 +64,80 @@ namespace KURSA4.WinFolder
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIRuchInstrument.Header;
+            
+            WinRuchInstrument winRuchInstrument = new WinRuchInstrument();
+            winRuchInstrument.ShowDialog();
+            Close();
         }
 
         private void MIMaliarInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIMaliarInstrument.Header;
+            WinMaliarInstrument winMaliarInstrument = new WinMaliarInstrument();
+            winMaliarInstrument.ShowDialog();
+            Close();
         }
 
         private void MISlesarInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MISlesarInstrument.Header;
+          WinSlesarInstrument winSlesarInstrument = new WinSlesarInstrument();
+            winSlesarInstrument.ShowDialog();
+            Close();
         }
 
         private void MISvarOborudovanie_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MISvarOborudovanie.Header;
+          WinSvarOborudovanie  winSvarOborudovanie = new WinSvarOborudovanie();
+            winSvarOborudovanie.ShowDialog();
+            Close();
         }
 
         private void MIRashodMaterial_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIRashodMaterial.Header;
+           WinRashodMaterial winRashodMaterial = new WinRashodMaterial();
+            winRashodMaterial.ShowDialog();
+            Close();
         }
 
         private void MIOsnastka_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIOsnastka.Header;
+            WinOsnastka winOsnastka = new WinOsnastka();
+            winOsnastka.ShowDialog();   
+            Close();
         }
 
         private void MIAbrazMaterial_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIAbrazMaterial.Header;
+           WinAbrazMaterial winAbrazMaterial = new WinAbrazMaterial();
+            winAbrazMaterial.ShowDialog();
+            Close();
         }
 
         private void MISadInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MISadInstrument.Header;
+           WinSadInstrument winSadInstrument = new WinSadInstrument();  
+            winSadInstrument.ShowDialog();
+            Close();
         }
 
         private void MIZashita_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIZashita.Header;
+           WinZashita winZashita = new WinZashita();
+            winZashita.ShowDialog();
+            Close();
         }
 
         private void MIOther_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIOther.Header;
+           WinOther winOther = new WinOther();
+            winOther.ShowDialog();
+            Close();
         }
 
         private void MIReshInstrument_Click(object sender, RoutedEventArgs e)
         {
-            LSelect.Content = MIReshInstrument.Header;
+           WinReshInstrument winReshInstrument = new WinReshInstrument();
+            winReshInstrument.ShowDialog();
+            Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

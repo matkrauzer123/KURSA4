@@ -84,6 +84,7 @@
         <Button x:Name="BCheck" Content="ОПЛАТИТЬ" HorizontalAlignment="Left" Height="267" Margin="1510,824,0,0" VerticalAlignment="Top" Width="420" FontSize="48" FontFamily="Arial" FontWeight="Bold" Background="#FF00CAFF" Foreground="White" FontStyle="Italic" BorderThickness="0,0,1,1" ClickMode="Press" BorderBrush="Black" Click="BCheck_Click"/>
         <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="#FFFD00FF"/>
         <Label x:Name="LPrice" Content="" HorizontalAlignment="Left" Height="62" Margin="1654,766,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Foreground="Red" FontWeight="Bold" FontFamily="Calibri" FontStyle="Italic"/>
+        <Label Content="Расходные материалы" HorizontalAlignment="Left" Height="420" Margin="761,63,0,0" VerticalAlignment="Top" Width="1047" FontSize="48" Foreground="White" FontWeight="Bold"/>
 
     </Grid>
 </Window>

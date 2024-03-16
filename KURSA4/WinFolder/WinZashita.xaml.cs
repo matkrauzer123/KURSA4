@@ -36,7 +36,7 @@ namespace KURSA4.WinFolder
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
-
+           WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
         }
 
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
