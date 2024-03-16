@@ -122,5 +122,10 @@ namespace KURSA4.WinFolder
         {
 
         }
+
+        private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
