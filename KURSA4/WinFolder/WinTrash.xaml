@@ -37,8 +37,11 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </DataGrid.RenderTransform>
-            
+
         </DataGrid>
+        <Button x:Name="BBuy" Content="Оплатить" HorizontalAlignment="Left" Height="208" Margin="720,624,0,0" VerticalAlignment="Top" Width="436" FontSize="48" FontFamily="Verdana" FontWeight="Bold" Background="#FFBECDD0" Click="BBuy_Click"/>
+        <Label Content="Общая сумма:" HorizontalAlignment="Left" Height="57" Margin="696,567,0,0" VerticalAlignment="Top" Width="269" FontSize="36" Foreground="#FF506BFF" FontWeight="Bold" FontStyle="Italic"/>
+        <Label x:Name="LPriceFinal" Content="" HorizontalAlignment="Left" Height="64" Margin="965,567,0,0" VerticalAlignment="Top" Width="208" Foreground="#FF00FFE2" FontSize="48" FontFamily="MS PGothic" FontStyle="Italic"/>
 
     </Grid>
 </Window>

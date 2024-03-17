@@ -66,7 +66,7 @@
     <Grid>
         <Menu x:Name="MItems" HorizontalAlignment="Left" Height="1094" VerticalAlignment="Center" Width="299" Foreground="#FF512DD6" Background="#FF3361BD">
             <MenuItem x:Name="MIKatalog" Header="Каталог" Foreground="White" FontSize="24" FontFamily="Arial" Margin="60,40,2,0" FontWeight="Bold" Click="MIKatalog_Click"/>
-            <MenuItem x:Name="MISverlInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Сверлильный инструмент" Margin="20,50,0,0"/>
+            <MenuItem x:Name="MISverlInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Сверлильный инструмент" Margin="20,50,0,0" Click="MISverlInstrument_Click"/>
             <MenuItem x:Name="MIStroitOtdelInstrument" Foreground="#FFFFBD07" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="" Margin="20,50,0,0" Click="MIStroitOtdelInstrument_Click" IsHitTestVisible="False"/>
             <MenuItem x:Name="MIReshInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Режущий инструмент" Margin="20,50,0,0" Click="MIReshInstrument_Click"/>
             <MenuItem x:Name="MIRuchInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Ручной инструмент" Margin="20,50,0,0" Click="MIRuchInstrument_Click"/>
