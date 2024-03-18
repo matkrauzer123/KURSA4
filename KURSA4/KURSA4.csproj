@@ -265,5 +265,65 @@
   <ItemGroup>
     <Resource Include="ImagesFolder\SDS.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Brasket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Domkrat2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Domkrat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Marker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\MagBint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Udlen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Klesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Rubanok140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Rubanok250.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Krest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Shliz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Karandash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Sekator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Nozhovka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Podshibnik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Kuvalda3000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Kuvalda1000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Kuvalda1500.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Kuvalda2000.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
