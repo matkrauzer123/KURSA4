@@ -131,5 +131,10 @@ namespace KURSA4.WinFolder
             trash.Show();
             Close();
         }
+
+        private void TBPrice2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

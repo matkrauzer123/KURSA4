@@ -325,5 +325,29 @@
   <ItemGroup>
     <Resource Include="ImagesFolder\Kuvalda2000.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Doloto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Regulir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Keramika.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Shipzi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Ribak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Ochki.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Ochki2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Piki.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

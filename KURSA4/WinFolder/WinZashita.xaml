@@ -84,9 +84,9 @@
         <Button x:Name="BCheck" Content="ОПЛАТИТЬ" HorizontalAlignment="Left" Height="267" Margin="1510,824,0,0" VerticalAlignment="Top" Width="420" FontSize="48" FontFamily="Arial" FontWeight="Bold" Background="#FF00CAFF" Foreground="White" FontStyle="Italic" BorderThickness="0,0,1,1" ClickMode="Press" BorderBrush="Black" Click="BCheck_Click"/>
         <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="#FFFD00FF"/>
         <Label x:Name="LPrice" Content="" HorizontalAlignment="Left" Height="62" Margin="1654,766,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Foreground="Red" FontWeight="Bold" FontFamily="Calibri" FontStyle="Italic"/>
-        <Label Content="Защита" HorizontalAlignment="Left" Height="420" Margin="912,63,0,0" VerticalAlignment="Top" Width="1047" FontSize="48" Foreground="White" FontWeight="Bold"/>
-        <Label Content="Буры SDS MAX 40X1000" HorizontalAlignment="Left" Height="105" Margin="358,519,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="304" Margin="358,221,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Gubka.png" RenderTransformOrigin="0.5,0.5">
+        <Label Content="Защита" HorizontalAlignment="Left" Height="115" Margin="912,63,0,0" VerticalAlignment="Top" Width="1047" FontSize="48" Foreground="White" FontWeight="Bold"/>
+        <Label Content="ОЧКИ ЗАЩИТНЫЕ" HorizontalAlignment="Left" Height="105" Margin="638,496,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
+        <Image HorizontalAlignment="Left" Height="304" Margin="638,198,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Ochki.png" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -96,29 +96,12 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="B40X1000" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X1000_Click"/>
-        <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="358,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="8 319 р." IsHitTestVisible="False"/>
-        <Label Content="БУРЫ SDS MAX 40Х600 " HorizontalAlignment="Left" Height="112" Margin="731,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="289" Margin="731,223,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Brusok.png"/>
-        <Button x:Name="B40X600" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X600_Click"/>
-        <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="731,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="5 664 р." IsHitTestVisible="False"/>
-        <Label x:Name="LL" Content="РУЛЕТКА VERTEXTOOLS " HorizontalAlignment="Left" Height="105" Margin="1106,519,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="302" Margin="1106,223,0,0" VerticalAlignment="Top" Width="291" Source="/ImagesFolder/Krug.png" Stretch="Fill" StretchDirection="DownOnly"/>
-        <Button x:Name="BRulet" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1106,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BRulet_Click"/>
-        <TextBox x:Name="TBPrice1" HorizontalAlignment="Left" Height="46" Margin="1106,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="471 р." IsHitTestVisible="False"/>
-        <Label Content="Буры SDS MAX 40X1000" HorizontalAlignment="Left" Height="105" Margin="1484,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="304" Margin="1484,214,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Chasha.png" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0.779"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-1.986"/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Button x:Name="B40X1000_Копировать" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1484,618,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X1000_Click"/>
-        <TextBox x:Name="TBPrice_Копировать" HorizontalAlignment="Left" Height="46" Margin="1484,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="8 319 р." IsHitTestVisible="False"/>
+        <Button x:Name="BOchki1" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="638,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="638,555,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="145 р." IsHitTestVisible="False"/>
+        <Label Content="ОЧКИ ЗАЩИТНЫЕ&#xD;&#xA; на резинке" HorizontalAlignment="Left" Height="112" Margin="1209,489,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
+        <Image HorizontalAlignment="Left" Height="289" Margin="1209,200,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Ochki2.png"/>
+        <Button x:Name="BOchki2" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1209,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="1209,555,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="146 р." IsHitTestVisible="False"/>
 
     </Grid>
 </Window>
