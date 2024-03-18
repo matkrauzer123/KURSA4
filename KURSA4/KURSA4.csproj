@@ -241,5 +241,29 @@
   <ItemGroup>
     <Resource Include="ImagesFolder\Krug.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Lezdia18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Oval.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Sklad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\14X250X20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\14X400X20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\Bit150.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImagesFolder\SDS.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
