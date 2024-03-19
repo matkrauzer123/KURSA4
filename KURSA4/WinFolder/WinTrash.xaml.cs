@@ -42,7 +42,7 @@ namespace KURSA4.WinFolder
             dt.Rows.Remove(dataRowView.Row);
           
             dataBase.sqlClose();
-            object price = dt.Rows ["PriceTrash"];
+            object price = dt.Rows[0]["PriceTrash"];
             LPriceFinal.Content = price;
         }
 
