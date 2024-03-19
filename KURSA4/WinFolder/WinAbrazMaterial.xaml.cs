@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TopCar;
 
 namespace KURSA4.WinFolder
 {
@@ -23,10 +26,24 @@ namespace KURSA4.WinFolder
         {
             InitializeComponent();
         }
-
+        static int price;
+        DataBase database = new DataBase();
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
+            database.sqlOpen();
+            string query = $"select  PriceUsers FROM PriceUser ";
+            SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlprice;
+            var a = sqlprice.ExecuteScalar();
+            price = Convert.ToInt32(a);
+            if (price != 0)
+            {
+                LPrice.Content = price;
+            }
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
+
+            database.sqlClose();
         }
 
         private void MIKatalog_Click(object sender, RoutedEventArgs e)
@@ -146,6 +163,174 @@ namespace KURSA4.WinFolder
         private void BRulet_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BGubka_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='4'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='4'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ВИСКОЗНАЯ ГУБКА','350','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUser set PriceUsers =PriceUsers+350";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUsers FROM PriceUser";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
+
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
+                LPrice.Content = price;
+            }
+        }
+
+        private void BBrusok_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='5'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='5'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('БРУСОК АБРАЗИВНЫЙ  ','272','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUser set PriceUsers =PriceUsers+272";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUsers FROM PriceUser";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
+
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
+                LPrice.Content = price;
+            }
+        }
+
+        private void BKrug_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='6'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='6'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('КРУГ ПОЛИРОВАЛЬНЫЙ','247','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUser set PriceUsers =PriceUsers+247";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUsers FROM PriceUser";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
+
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
+                LPrice.Content = price;
+            }
+        }
+
+        private void BChasha_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            string query = "Select StockTools  from Tools  where IdTools='7'";
+            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
+            sqlDataAdapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            if (stock1 == 0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                stock1--;
+                DataTable dataTable = new DataTable();
+                query = $"update  Tools set StockTools ='{stock1}' where IdTools='7'";
+                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlCommandd;
+                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTable1 = new DataTable();
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ЧАША АЛМАЗНАЯ ','423','{stock1}')";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlTrash;
+                sqlDataAdapter.Fill(dataTable1);
+                DataTable dt = new DataTable();
+                query = $"update  PriceUser set PriceUsers =PriceUsers+423";
+                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprice;
+                sqlDataAdapter.Fill(dt);
+                query = $"select  PriceUsers FROM PriceUser";
+                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+                sqlDataAdapter.SelectCommand = sqlprices;
+
+                var a = sqlprices.ExecuteScalar();
+                price = Convert.ToInt32(a);
+                LPrice.Content = price;
+            }
         }
     }
 }

@@ -40,9 +40,10 @@ namespace KURSA4.WinFolder
             Button senderButton = sender as Button;
             DataRowView dataRowView = senderButton.DataContext as DataRowView;
             dt.Rows.Remove(dataRowView.Row);
-            string deletedName = dataRowView["NameTrash"] as string;
-            int deletedPrice = Convert.ToInt32(dataRowView["PriceTrash"]);
+          
             dataBase.sqlClose();
+            object price = dt.Rows ["PriceTrash"];
+            LPriceFinal.Content = price;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -61,7 +62,7 @@ namespace KURSA4.WinFolder
             adapter.Fill(dt);         
             DGTrash.ItemsSource = dt.DefaultView;
             DataTable dataTable1 = new DataTable();
-             string query = $"SELECT PriceUser FROM PriceUsers";
+             string query = $"SELECT PriceUsers FROM PriceUser";
             SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
             adapter.SelectCommand = sqlTrash;
             var a = sqlTrash.ExecuteScalar();
@@ -74,6 +75,9 @@ namespace KURSA4.WinFolder
              
         }
 
-       
+        private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -96,15 +96,15 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="BRibak" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BRibak" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BRibak_Click"/>
         <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="358,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="377 р." IsHitTestVisible="False"/>
         <Label Content="ЩИПЦЫ ДЛЯ СВП" HorizontalAlignment="Left" Height="112" Margin="731,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="289" Margin="731,223,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Shipzi.png"/>
-        <Button x:Name="BShipzi" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BShipzi" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BShipzi_Click"/>
         <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="731,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="542 р." IsHitTestVisible="False" TextChanged="TBPrice2_TextChanged"/>
         <Label x:Name="LL" Content="ГАЗОВАЯ ГОРЕЛКА &#xD;&#xA;С РЕГУЛИРОВКОЙ" HorizontalAlignment="Left" Height="105" Margin="1106,519,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="22"/>
         <Image HorizontalAlignment="Left" Height="302" Margin="1106,223,0,0" VerticalAlignment="Top" Width="291" Source="/ImagesFolder/Regulir.png" Stretch="Fill" StretchDirection="DownOnly"/>
-        <Button x:Name="BRegulir" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1106,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BRegulir" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1106,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BRegulir_Click"/>
         <TextBox x:Name="TBPrice1" HorizontalAlignment="Left" Height="46" Margin="1106,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="324 р." IsHitTestVisible="False"/>
         <Label Content="ГОРЕЛКА ГАЗОВАЯ&#xD;&#xA;  &quot;КЕРАМИКА&quot;" HorizontalAlignment="Left" Height="105" Margin="1484,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="22"/>
         <Image HorizontalAlignment="Left" Height="304" Margin="1484,214,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Keramika.png" RenderTransformOrigin="0.5,0.5">
@@ -117,7 +117,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="BKeramika" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1484,618,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BKeramika" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1484,618,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BKeramika_Click"/>
         <TextBox x:Name="TBPrice_Копировать" HorizontalAlignment="Left" Height="46" Margin="1484,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="621 р." IsHitTestVisible="False"/>
 
     </Grid>

@@ -96,15 +96,15 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="BSds" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BSds" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BSds_Click"/>
         <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="358,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="1 235 р." IsHitTestVisible="False"/>
         <Label Content="ЗУБИЛО SDS 14Х400Х20" HorizontalAlignment="Left" Height="112" Margin="731,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="289" Margin="731,223,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/14X400X20.png"/>
-        <Button x:Name="B14X400X20" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="B14X400X20" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B14X400X20_Click"/>
         <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="731,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="424 р." IsHitTestVisible="False"/>
         <Label x:Name="LL" Content="АДАПТЕР ДЛЯ БИТ 150мм" HorizontalAlignment="Left" Height="105" Margin="1106,519,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="302" Margin="1106,223,0,0" VerticalAlignment="Top" Width="291" Source="/ImagesFolder/Bit150.png" Stretch="Fill" StretchDirection="DownOnly"/>
-        <Button x:Name="BBit" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1106,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BBit" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1106,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BBit_Click"/>
         <TextBox x:Name="TBPrice1" HorizontalAlignment="Left" Height="46" Margin="1106,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="599 р." IsHitTestVisible="False"/>
         <Label Content="ЗУБИЛО SDS 14Х250Х20 " HorizontalAlignment="Left" Height="105" Margin="1484,512,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="304" Margin="1484,214,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/14X250X20.png" RenderTransformOrigin="0.5,0.5">
@@ -117,7 +117,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="B14X250X20" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1484,618,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="B14X250X20" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1484,618,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B14X250X20_Click"/>
         <TextBox x:Name="TBPrice_Копировать" HorizontalAlignment="Left" Height="46" Margin="1484,572,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="265 р." IsHitTestVisible="False"/>
 
     </Grid>

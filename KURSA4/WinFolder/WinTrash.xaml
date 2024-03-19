@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Trash" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid Background="#FF210D6B">
-        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False">
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged">
             <DataGrid.Columns>
                 <!-- Другие столбцы из вашего DataTable -->
 

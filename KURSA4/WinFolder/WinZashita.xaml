@@ -96,11 +96,11 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="BOchki1" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="638,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BOchki1" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="638,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BOchki1_Click"/>
         <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="638,555,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="145 р." IsHitTestVisible="False"/>
         <Label Content="ОЧКИ ЗАЩИТНЫЕ&#xD;&#xA; на резинке" HorizontalAlignment="Left" Height="112" Margin="1209,489,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="289" Margin="1209,200,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Ochki2.png"/>
-        <Button x:Name="BOchki2" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1209,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF"/>
+        <Button x:Name="BOchki2" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1209,601,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BOchki2_Click"/>
         <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="1209,555,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="146 р." IsHitTestVisible="False"/>
 
     </Grid>

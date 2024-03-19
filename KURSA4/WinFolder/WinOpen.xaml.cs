@@ -39,7 +39,7 @@ namespace KURSA4.WinFolder
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
             database.sqlOpen();
-            string  query = $"select  PriceUser FROM PriceUsers ";
+            string  query = $"select  PriceUsers FROM PriceUser ";
             SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();    
             sqlDataAdapter.SelectCommand = sqlprice;
@@ -173,11 +173,11 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
                 DataTable dt = new DataTable();
-                query = $"update  PriceUsers set PriceUser =PriceUser+8319";
+                query = $"update  PriceUser set PriceUsers =PriceUsers+8319";
                 SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprice;
                 sqlDataAdapter.Fill(dt);
-                query = $"select  PriceUser FROM PriceUsers";
+                query = $"select  PriceUsers FROM PriceUser";
                 SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprices;
 
@@ -229,11 +229,11 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
                 DataTable dt = new DataTable();
-                query = $"update  PriceUsers set PriceUser =PriceUser+5664";
+                query = $"update  PriceUser set PriceUsers =PriceUsers+5664";
                 SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprice;
                 sqlDataAdapter.Fill(dt);
-                query = $"select  PriceUser FROM PriceUsers";
+                query = $"select  PriceUsers FROM PriceUser";
                 SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprices;
 
@@ -271,11 +271,11 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
                 DataTable dt = new DataTable();
-                query = $"update  PriceUsers set PriceUser =PriceUser+471";
+                query = $"update  PriceUser set PriceUsers =PriceUsers+471";
                 SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprice;
                 sqlDataAdapter.Fill(dt);
-                query = $"select  PriceUser FROM PriceUsers";
+                query = $"select  PriceUsers FROM PriceUser";
                 SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprices;
 
