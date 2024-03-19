@@ -29,7 +29,7 @@ namespace KURSA4.WinFolder
         DataBase dataBase = new DataBase(); 
         private void BCurrect_Click(object sender, RoutedEventArgs e)
         {
-
+            dataBase.sqlOpen();
             var passUser = PBPassword.Password;
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
@@ -38,12 +38,30 @@ namespace KURSA4.WinFolder
             SqlCommand command = new SqlCommand(query, dataBase.GetConnection());
             sqlDataAdapter.SelectCommand = command;
             sqlDataAdapter.Fill(dt);
-            MessageBox.Show("Начало", "Смена открыта");
-            Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Close();
-            WinOpen winOpen = new WinOpen();
-            winOpen.Show();
+            int a = dt.Rows.Count;
+            if (a==1)
+            {
+                MessageBox.Show("Начало", "Смена открыта");
+                Close();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Close();
+                WinOpen winOpen = new WinOpen();
+                winOpen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Проблем", "Пароль неверный!!");
+
+               
+            }
+            dataBase.sqlClose();
+
+
+
+
+
+
+
         }
     }
 }

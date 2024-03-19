@@ -9,9 +9,7 @@
     <Grid Background="#FF210D6B">
         <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF071523" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged">
             <DataGrid.Columns>
-                <!-- Другие столбцы из вашего DataTable -->
-
-                <!-- Колонка с кнопкой "Удалить" -->
+              
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -20,7 +18,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <!-- Колонка с кнопкой "Добавить" -->
+         
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -42,6 +40,7 @@
         <Button x:Name="BBuy" Content="Оплатить" HorizontalAlignment="Left" Height="208" Margin="720,624,0,0" VerticalAlignment="Top" Width="436" FontSize="48" FontFamily="Verdana" FontWeight="Bold" Background="#FFBECDD0" Click="BBuy_Click"/>
         <Label Content="Общая сумма:" HorizontalAlignment="Left" Height="57" Margin="696,567,0,0" VerticalAlignment="Top" Width="269" FontSize="36" Foreground="#FF506BFF" FontWeight="Bold" FontStyle="Italic"/>
         <Label x:Name="LPriceFinal" Content="" HorizontalAlignment="Left" Height="64" Margin="965,567,0,0" VerticalAlignment="Top" Width="208" Foreground="#FF00FFE2" FontSize="48" FontFamily="MS PGothic" FontStyle="Italic"/>
+        <Button x:Name="BBck" Content="Назад" HorizontalAlignment="Left" Height="58" Margin="10,10,0,0" VerticalAlignment="Top" Width="156" FontSize="20" FontWeight="Bold" FontFamily="Bauhaus 93" Click="BBck_Click"/>
 
     </Grid>
 </Window>

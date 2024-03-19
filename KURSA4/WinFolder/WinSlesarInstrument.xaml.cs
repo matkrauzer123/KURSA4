@@ -257,7 +257,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Кувалда, 2000 г.,'1962','{stock1}')";
+                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('Кувалда, 2000 г.','1962','{stock1}')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
