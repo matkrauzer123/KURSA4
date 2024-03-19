@@ -38,8 +38,8 @@ namespace KURSA4.WinFolder
         {
             dataBase.sqlOpen();
             Button senderButton = sender as Button;
-            DataRowView dataRowView = senderButton.DataContext as DataRowView;         
-           ;
+            DataRowView dataRowView = senderButton.DataContext as DataRowView;
+            //update Tools set StockTools = 101 where NameTools = 'МАРКЕР СТРОИТ.ЧЕРНЫЙ'
             string id = dataRowView.Row["IdTrash"].ToString();
             string name = dataRowView.Row["NameTrash"].ToString();
             string price = dataRowView.Row["PriceTrash"].ToString();
@@ -51,6 +51,16 @@ namespace KURSA4.WinFolder
             SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
             adapter.SelectCommand = sqlTrash1;
             sqlTrash1.ExecuteNonQuery();
+
+            string querys = $"Select StockTools  from Tools  where NameTools = '{name}'";
+            SqlCommand sqlCommand = new SqlCommand(querys, dataBase.GetConnection());
+            adapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+
+            string query3 = $"update Tools set StockTools = {stock1+1} where NameTools = '{name}'";
+            SqlCommand sqlTrash3 = new SqlCommand(query3, dataBase.GetConnection());
+            adapter.SelectCommand = sqlTrash3;
+            sqlTrash3.ExecuteNonQuery();
             string query2 = $"SELECT PriceUsers FROM PriceUser";
             SqlCommand sqlTrash2 = new SqlCommand(query2, dataBase.GetConnection());
             adapter.SelectCommand = sqlTrash2;
@@ -64,31 +74,57 @@ namespace KURSA4.WinFolder
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             dataBase.sqlOpen();
+
             Button senderButton = sender as Button;
             DataRowView dataRowView = senderButton.DataContext as DataRowView;
-            string id = dataRowView.Row["IdTrash"].ToString();
+            int id = (int)dataRowView.Row["IdTrash"];
             string name = dataRowView.Row["NameTrash"].ToString();
             string price = dataRowView.Row["PriceTrash"].ToString();
-             string query1 = $"insert into Trash(NameTrash,PriceTrash)values('{name}',{price})";
-            SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
-            adapter.SelectCommand = sqlTrash1;
-            sqlTrash1.ExecuteNonQuery();
-            string query2 = $"update PriceUser set PriceUsers=PriceUsers+{Convert.ToInt32(price)}";
-            SqlCommand sqlTrash2 = new SqlCommand(query2, dataBase.GetConnection());
-            adapter.SelectCommand = sqlTrash2;
-            sqlTrash2 .ExecuteNonQuery();
-            string query3 = $"SELECT PriceUsers FROM PriceUser";
-            SqlCommand sqlTrash3 = new SqlCommand(query3, dataBase.GetConnection());
-            adapter.SelectCommand = sqlTrash2;
-            var a = sqlTrash3.ExecuteScalar();
-            LPriceFinal.Content = a;
-            DataRow newRow = dt.NewRow();
-            newRow["IdTrash"]= id;
-            newRow["NameTrash"] = name;
-            newRow["PriceTrash"] = price;
+
+            string maxid = $"Select Max(IdTrash) from Trash";
+            SqlCommand sqlCommandd = new SqlCommand(maxid, dataBase.GetConnection());
+            adapter.SelectCommand = sqlCommandd;
+            int max = (int)sqlCommandd.ExecuteScalar();
+            string querys = $"Select StockTools  from Tools  where NameTools = '{name}'";
+            SqlCommand sqlCommand = new SqlCommand(querys, dataBase.GetConnection());
+            adapter.SelectCommand = sqlCommand;
+            int stock1 = (int)sqlCommand.ExecuteScalar();
+            if (stock1==0)
+            {
+                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                string query1 = $"insert into Trash(NameTrash,PriceTrash)values('{name}',{price})";
+                SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash1;
+                sqlTrash1.ExecuteNonQuery();
+                string query2 = $"update PriceUser set PriceUsers=PriceUsers+{Convert.ToInt32(price)}";
+                SqlCommand sqlTrash2 = new SqlCommand(query2, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash2;
+                sqlTrash2.ExecuteNonQuery();
 
 
-            dt.Rows.Add(newRow);
+
+                string query4 = $"update Tools set StockTools = {stock1 - 1} where NameTools = '{name}'";
+                SqlCommand sqlTrash4 = new SqlCommand(query4, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash4;
+                sqlTrash4.ExecuteNonQuery();
+
+                string query3 = $"SELECT PriceUsers FROM PriceUser";
+                SqlCommand sqlTrash3 = new SqlCommand(query3, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash2;
+                var a = sqlTrash3.ExecuteScalar();
+                LPriceFinal.Content = a;
+                DataRow newRow = dt.NewRow();
+                newRow["IdTrash"] = (max+1);
+                newRow["NameTrash"] = name;
+                newRow["PriceTrash"] = price;
+
+
+                dt.Rows.Add(newRow);
+            }
+            
             dataBase.sqlClose();
             
         }

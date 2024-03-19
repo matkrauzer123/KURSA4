@@ -178,7 +178,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ГОРЕЛКА ГАЗОВАЯ\r\n \"РЫБАК\"','377','{stock1}')";
+                query = $"insert into Trash(NameTrash,PriceTrash) values('ГОРЕЛКА ГАЗОВАЯ\r\n \"РЫБАК\"','377')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
@@ -220,7 +220,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ЩИПЦЫ ДЛЯ СВП','542','{stock1}')";
+                query = $"insert into Trash(NameTrash,PriceTrash) values('ЩИПЦЫ ДЛЯ СВП','542')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
@@ -262,7 +262,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ГАЗОВАЯ ГОРЕЛКА \r\nС РЕГУЛИРОВКОЙ','324','{stock1}')";
+                query = $"insert into Trash(NameTrash,PriceTrash) values('ГАЗОВАЯ ГОРЕЛКА \r\nС РЕГУЛИРОВКОЙ','324')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
@@ -304,7 +304,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlCommandd;
                 sqlDataAdapter.Fill(dataTable);
                 DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash,StockTrash) values('ГОРЕЛКА ГАЗОВАЯ\r\n  \"КЕРАМИКА\"','621','{stock1}')";
+                query = $"insert into Trash(NameTrash,PriceTrash) values('ГОРЕЛКА ГАЗОВАЯ\r\n  \"КЕРАМИКА\"','621')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlDataAdapter.Fill(dataTable1);
