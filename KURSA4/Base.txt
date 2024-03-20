@@ -1,6 +1,6 @@
-﻿USE [zz]
+﻿USE [zzz]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 19.03.2024 17:50:27 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 20.03.2024 3:28:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11,7 +11,19 @@ CREATE TABLE [dbo].[Admin](
 	[PasswordAdmin] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PriceUser]    Script Date: 19.03.2024 17:50:28 ******/
+/****** Object:  Table [dbo].[End]    Script Date: 20.03.2024 3:28:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[End](
+	[IdEnd] [int] IDENTITY(1,1) NOT NULL,
+	[EndPrice] [int] NULL,
+	[EndDate] [nvarchar](50) NULL,
+	[EndAdminName] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PriceUser]    Script Date: 20.03.2024 3:28:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,16 +32,7 @@ CREATE TABLE [dbo].[PriceUser](
 	[PriceUsers] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Result]    Script Date: 19.03.2024 17:50:28 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Result](
-	[ResultOfDay] [nvarchar](50) NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Tools]    Script Date: 19.03.2024 17:50:28 ******/
+/****** Object:  Table [dbo].[Tools]    Script Date: 20.03.2024 3:28:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -41,7 +44,7 @@ CREATE TABLE [dbo].[Tools](
 	[StockTools] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Trash]    Script Date: 19.03.2024 17:50:28 ******/
+/****** Object:  Table [dbo].[Trash]    Script Date: 20.03.2024 3:28:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -49,8 +52,7 @@ GO
 CREATE TABLE [dbo].[Trash](
 	[IdTrash] [int] IDENTITY(0,1) NOT NULL,
 	[NameTrash] [nvarchar](50) NULL,
-	[PriceTrash] [int] NULL,
-	[StockTrash] [nvarchar](50) NULL
+	[PriceTrash] [int] NULL
 ) ON [PRIMARY]
 GO
 SET IDENTITY_INSERT [dbo].[Admin] ON 
@@ -65,8 +67,8 @@ GO
 SET IDENTITY_INSERT [dbo].[Tools] ON 
 
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (1, N'Буры SDS MAX 40X1000', N'8319', 3)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (2, N'БУРЫ SDS MAX 40Х600 ', N'5664', 4)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (3, N'РУЛЕТКА VERTEXTOOLS ', N'471', 5)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (2, N'Буры SDS MAX 40Х600 ', N'5664', 4)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (3, N'РУЛЕТКА VERTEXTOOLS ', N'471', 4)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (4, N'ВИСКОЗНАЯ ГУБКА ', N'350', 15)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (5, N'БРУСОК АБРАЗИВНЫЙ', N'272', 11)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (6, N'КРУГ ПОЛИРОВАЛЬНЫЙ', N'247', 12)
@@ -76,20 +78,20 @@ INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (10, N'КЕЛЬМА "ОВАЛ"', N'399', 9)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (11, N'СКЛАДНОЙ НОЖ ', N'307', 20)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (12, N'ПЕРЕХОДНИК НА SDS+', N'1235', 1)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (13, N'ЗУБИЛО SDS 14Х400Х20', N'424', 3)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (14, N'АДАПТЕР ДЛЯ БИТ 150мм', N'599', 5)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (13, N'ЗУБИЛО SDS 14Х400Х20', N'424', 2)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (14, N'АДАПТЕР ДЛЯ БИТ 150мм', N'599', 4)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (15, N'ЗУБИЛО SDS 14Х250Х20 ', N'265', 3)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (16, N'МАРКЕР СТРОИТ.ЧЕРНЫЙ', N'122', 100)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (16, N'МАРКЕР СТРОИТ.ЧЕРНЫЙ', N'122', 101)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (17, N'ДОМКРАТ ОДИНАРНЫЙ', N'448', 6)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (18, N'ДОМКРАТ ДВОЙНОЙ', N'819', 2)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (19, N'МАГНИТНЫЙ БРАСЛЕТ', N'426', 7)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (20, N'УДЛИН. ДЛЯ БИТ 150мм', N'583', 4)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (21, N'УДЛИН. ДЛЯ БИТ 75мм', N'327', 6)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (22, N'БИТЫ МАГН. 10мм 65мм', N'80', 55)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (21, N'УДЛИН. ДЛЯ БИТ 75мм', N'327', 5)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (22, N'БИТЫ МАГН. 10мм 65мм', N'80', 53)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (23, N'БИТЫ МАГН. 10мм 45мм', N'76', 33)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (24, N'КЛЕЩИ-ПЛИТКОРЕЗ', N'232', 2)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (25, N'ДИСК АЛМАЗНЫЙ', N'341', 5)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (26, N'РУБАНОК 140Х42 ММ', N'442', 1)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (26, N'РУБАНОК 140Х42 ММ', N'442', 3)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (27, N'РУБАНОК 250Х42 ММ', N'598', 2)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (28, N'ОТВЕРТКА КРЕСТ. 3Х75', N'179', 98)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (29, N'ОТВЕРТКА КРЕСТ. 5Х75', N'199', 99)
@@ -99,8 +101,8 @@ INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (33, N'НОЖОВКА 500мм', N'1100', 10)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (34, N'НОЖОВКА  700мм', N'1478', 7)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (35, N'СЕКАТОР ПЛОСК. 16мм', N'355', 5)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (36, N'Кувалда, 1000 г.', N'964', 6)
-INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (37, N'Кувалда, 1500 г.', N'1450', 71)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (36, N'Кувалда, 1000 г.', N'964', 5)
+INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (37, N'Кувалда, 1500 г.', N'1450', 70)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (38, N'Кувалда, 2000 г.', N'1962', 15)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (39, N'Кувалда, 3000 г.', N'2586', 8)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (40, N'ДОЛОТО-СТАМЕСКА 6мм', N'424', 9)
@@ -111,7 +113,7 @@ INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES
  "РЫБАК"', N'377', 6)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (45, N'ЩИПЦЫ ДЛЯ СВП', N'542', 4)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (46, N'ГАЗОВАЯ ГОРЕЛКА 
-С РЕГУЛИРОВКОЙ', N'324', 0)
+С РЕГУЛИРОВКОЙ', N'324', 5)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (47, N'ГОРЕЛКА ГАЗОВАЯ
   "КЕРАМИКА"', N'621', 6)
 INSERT [dbo].[Tools] ([IdTools], [NameTools], [PriceTools], [StockTools]) VALUES (48, N'ПИКА SDS MAX 18Х400', N'562', 5)

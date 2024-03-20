@@ -145,9 +145,27 @@ namespace KURSA4.WinFolder
 
         private void BCheck_Click(object sender, RoutedEventArgs e)
         {
-            Trash trash = new Trash();
-            trash.Show();
-            Close();
+            database.sqlOpen();
+            string query = $"select  PriceUsers FROM PriceUser";
+            SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+            sqlDataAdapter.SelectCommand = sqlprices;
+
+            var a = sqlprices.ExecuteScalar();
+            price = Convert.ToInt32(a);
+
+            switch (a)
+            {
+                case 0:
+                    MessageBox.Show("Корзина пуста!", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                default:
+                    Trash trash = new Trash();
+                    trash.Show();
+                    Close();
+                    break;
+            }
+            database.sqlClose();
         }
 
         private void BKlesh_Click(object sender, RoutedEventArgs e)

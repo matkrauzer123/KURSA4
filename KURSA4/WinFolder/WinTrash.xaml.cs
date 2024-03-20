@@ -17,6 +17,13 @@ using TopCar;
 using System.Collections;
 using Microsoft.SqlServer.Server;
 using System.Diagnostics;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.IO;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Xml.Linq;
+using DocumentFormat.OpenXml.InkML;
 
 namespace KURSA4.WinFolder
 {
@@ -146,9 +153,36 @@ namespace KURSA4.WinFolder
 
         private void BBuy_Click(object sender, RoutedEventArgs e)
         {
-             
-        }
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+            // Создаем универсальный путь к файлу на рабочем столе
+            string filePath = System.IO.Path.Combine(desktopPath, "заказ.txt");
+
+
+
+            // Создаем новый файл или перезаписываем существующий
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                // Записываем текст в файл
+                foreach (DataRow row in dt.Rows)
+                {
+                    // Записываем данные из DataTable в файл
+                    writer.WriteLine(row["NameTrash"] + " - " + row["PriceTrash"]+ "р.");
+                }
+                writer.WriteLine($"\n\n\t\t Сумма: {LPriceFinal.Content}");
+            }
+            dataBase.sqlOpen();
+            MessageBox.Show("Спасибо за покупку!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
+            string query = $"UPDATE [End]SET EndPrice= EndPrice+{(int)LPriceFinal.Content}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+            SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
+            adapter.SelectCommand = sqlTrash;
+            sqlTrash.ExecuteNonQuery();
+            dataBase.sqlClose() ;
+            WinOpen winOpen = new WinOpen();
+            winOpen.Show();
+            Close();
+
+        }
         private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -158,7 +192,29 @@ namespace KURSA4.WinFolder
         {
            WinOpen winOpen = new WinOpen();
             winOpen.ShowDialog();
-            Close();
+            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            dataBase.sqlOpen() ;
+           string query = $"update [End] set EndDate ='{DateTime.Today.Date}' WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+            SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
+           adapter.SelectCommand = sqlTrash;
+            sqlTrash.ExecuteNonQuery();
+            string del = $"Delete from Trash";
+            SqlCommand sqldel = new SqlCommand(del, dataBase.GetConnection());
+            adapter.SelectCommand = sqldel;
+            sqldel.ExecuteNonQuery();
+
+            string query1 = $"update PriceUser set PriceUsers=0";
+            SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
+            adapter.SelectCommand = sqlTrash1;
+            sqlTrash1.ExecuteNonQuery();
+            dataBase.sqlClose();
+           
+            
+
         }
     }
 }
