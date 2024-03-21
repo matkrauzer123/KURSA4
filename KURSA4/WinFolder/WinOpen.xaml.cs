@@ -177,6 +177,7 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprice;
                 sqlDataAdapter.Fill(dt);
+
                 query = $"select  PriceUsers FROM PriceUser";
                 SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlprices;
@@ -324,10 +325,7 @@ namespace KURSA4.WinFolder
             adapter.SelectCommand = sqldel;
             sqldel.ExecuteNonQuery();
 
-            string query1 = $"update PriceUser set PriceUsers=0";
-            SqlCommand sqlTrash1 = new SqlCommand(query1, database.GetConnection());
-            adapter.SelectCommand = sqlTrash1;
-            sqlTrash1.ExecuteNonQuery();
+            
             database.sqlClose();
         }
     }
