@@ -53,7 +53,7 @@ namespace KURSA4.WinFolder
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();
                
-                MessageBox.Show("Начало", "Смена открыта");
+                MessageBox.Show("Начало", "Смена открыта",MessageBoxButton.OK,MessageBoxImage.Information);
                 Close();
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Close();
@@ -63,7 +63,7 @@ namespace KURSA4.WinFolder
             }
             else
             {
-                MessageBox.Show("Проблем", "Пароль неверный!!");
+                MessageBox.Show("Пароль неверный!!", "Проблема!!",MessageBoxButton.OK,MessageBoxImage.Error);
 
                
             }

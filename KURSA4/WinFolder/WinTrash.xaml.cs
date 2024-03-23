@@ -47,9 +47,9 @@ namespace KURSA4.WinFolder
             Button senderButton = sender as Button;
             DataRowView dataRowView = senderButton.DataContext as DataRowView;
             //update Tools set StockTools = 101 where NameTools = 'МАРКЕР СТРОИТ.ЧЕРНЫЙ'
-            string id = dataRowView.Row["IdTrash"].ToString();
-            string name = dataRowView.Row["NameTrash"].ToString();
-            string price = dataRowView.Row["PriceTrash"].ToString();
+            string id = dataRowView.Row["ID продукта"].ToString();
+            string name = dataRowView.Row["Название"].ToString();
+            string price = dataRowView.Row["Цена"].ToString();
             string query = $"Delete from Trash where IdTrash={Convert.ToInt32(id)}";
             SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
             adapter.SelectCommand = sqlTrash;
@@ -84,9 +84,9 @@ namespace KURSA4.WinFolder
 
             Button senderButton = sender as Button;
             DataRowView dataRowView = senderButton.DataContext as DataRowView;
-            int id = (int)dataRowView.Row["IdTrash"];
-            string name = dataRowView.Row["NameTrash"].ToString();
-            string price = dataRowView.Row["PriceTrash"].ToString();
+            int id = (int)dataRowView.Row["ID продукта"];
+            string name = dataRowView.Row["Название"].ToString();
+            string price = dataRowView.Row["Цена"].ToString();
 
             string maxid = $"Select Max(IdTrash) from Trash";
             SqlCommand sqlCommandd = new SqlCommand(maxid, dataBase.GetConnection());
@@ -124,8 +124,8 @@ namespace KURSA4.WinFolder
                 var a = sqlTrash3.ExecuteScalar();
                 LPriceFinal.Content = a;
                 DataRow newRow = dt.NewRow();
-                newRow["IdTrash"] = (max+1);
-                newRow["NameTrash"] = name;
+                newRow["ID продукта"] = (max+1);
+                newRow["Название"] = name;
                 newRow["PriceTrash"] = price;
 
 
@@ -140,7 +140,11 @@ namespace KURSA4.WinFolder
         {
             adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash from Trash", dataBase.GetConnection());
             dataBase.sqlOpen();
-            adapter.Fill(dt);         
+            adapter.Fill(dt);
+            dt.Columns[0].ColumnName = "ID продукта";
+            dt.Columns[1].ColumnName = "Название";
+            dt.Columns[2].ColumnName = "Цена";
+            DGTrash.IsReadOnly = true;
             DGTrash.ItemsSource = dt.DefaultView;
             DataTable dataTable1 = new DataTable();
              string query = $"SELECT PriceUsers FROM PriceUser";
@@ -153,34 +157,43 @@ namespace KURSA4.WinFolder
 
         private void BBuy_Click(object sender, RoutedEventArgs e)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            // Создаем универсальный путь к файлу на рабочем столе
-            string filePath = System.IO.Path.Combine(desktopPath, "заказ.txt");
-
-
-
-            // Создаем новый файл или перезаписываем существующий
-            using (StreamWriter writer = new StreamWriter(filePath))
+            if (dt.Rows.Count==0)
             {
-                // Записываем текст в файл
-                foreach (DataRow row in dt.Rows)
-                {
-                    // Записываем данные из DataTable в файл
-                    writer.WriteLine(row["NameTrash"] + " - " + row["PriceTrash"]+ "р.");
-                }
-                writer.WriteLine($"\n\n\t\t Сумма: {LPriceFinal.Content}");
+                MessageBox.Show("Вы ничего не заказали!!", "Проблема!",MessageBoxButton.OK,MessageBoxImage.Warning);
+
             }
-            dataBase.sqlOpen();
-            MessageBox.Show("Спасибо за покупку!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
-            string query = $"UPDATE [End]SET EndPrice= EndPrice+{(int)LPriceFinal.Content}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
-            SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
-            adapter.SelectCommand = sqlTrash;
-            sqlTrash.ExecuteNonQuery();
-            dataBase.sqlClose() ;
-            WinOpen winOpen = new WinOpen();
-            winOpen.Show();
-            Close();
+            else
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                // Создаем универсальный путь к файлу на рабочем столе
+                string filePath = System.IO.Path.Combine(desktopPath, "заказ.txt");
+
+
+
+                // Создаем новый файл или перезаписываем существующий
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    // Записываем текст в файл
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        // Записываем данные из DataTable в файл
+                        writer.WriteLine(row["Название"] + " - " + row["Цена"] + "р.");
+                    }
+                    writer.WriteLine($"\n\n\t\t Сумма: {LPriceFinal.Content}");
+                }
+                dataBase.sqlOpen();
+                MessageBox.Show("Спасибо за покупку!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
+                string query = $"UPDATE [End]SET EndPrice= EndPrice+{(int)LPriceFinal.Content}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+                SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash;
+                sqlTrash.ExecuteNonQuery();
+                dataBase.sqlClose();
+                WinOpen winOpen = new WinOpen();
+                winOpen.Show();
+                Close();
+            }
+           
 
         }
         private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
