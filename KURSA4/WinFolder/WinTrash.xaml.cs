@@ -91,7 +91,7 @@ namespace KURSA4.WinFolder
             string maxid = $"Select Max(IdTrash) from Trash";
             SqlCommand sqlCommandd = new SqlCommand(maxid, dataBase.GetConnection());
             adapter.SelectCommand = sqlCommandd;
-            int max = (int)sqlCommandd.ExecuteScalar();
+            int max = Convert.ToInt32( sqlCommandd.ExecuteScalar());
             string querys = $"Select StockTools  from Tools  where NameTools = '{name}'";
             SqlCommand sqlCommand = new SqlCommand(querys, dataBase.GetConnection());
             adapter.SelectCommand = sqlCommand;
@@ -126,7 +126,7 @@ namespace KURSA4.WinFolder
                 DataRow newRow = dt.NewRow();
                 newRow["ID продукта"] = (max+1);
                 newRow["Название"] = name;
-                newRow["PriceTrash"] = price;
+                newRow["Цена"] = price;
 
 
                 dt.Rows.Add(newRow);
@@ -188,6 +188,16 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
                 adapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();
+                string del = $"Delete from Trash";
+                SqlCommand sqldel = new SqlCommand(del, dataBase.GetConnection());
+                adapter.SelectCommand = sqldel;
+                sqldel.ExecuteNonQuery();
+
+                string query1 = $"update PriceUser set PriceUsers=0";
+                SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
+                adapter.SelectCommand = sqlTrash1;
+                sqlTrash1.ExecuteNonQuery();
+                dataBase.sqlClose();
                 dataBase.sqlClose();
                 WinOpen winOpen = new WinOpen();
                 winOpen.Show();

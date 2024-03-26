@@ -171,6 +171,7 @@ namespace KURSA4.WinFolder
                 query = $"insert into Trash(NameTrash,PriceTrash) values('Буры SDS MAX 40X1000','8319')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
+             
                 sqlDataAdapter.Fill(dataTable1);
                 DataTable dt = new DataTable();
                 query = $"update  PriceUser set PriceUsers =PriceUsers+8319";
@@ -314,19 +315,7 @@ namespace KURSA4.WinFolder
 
         private void WinOpen1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            database.sqlOpen();
-            string query = $"update [End] set EndDate ='{DateTime.Today.Date}' WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
-            SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-            adapter.SelectCommand = sqlTrash;
-            sqlTrash.ExecuteNonQuery();
-            string del = $"Delete from Trash";
-            SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
-            adapter.SelectCommand = sqldel;
-            sqldel.ExecuteNonQuery();
-
             
-            database.sqlClose();
         }
     }
 }

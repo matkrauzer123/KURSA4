@@ -64,7 +64,7 @@
         </Style>
     </Window.Resources>
     <Grid Background="#FF210D6B">
-        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="737" Margin="290,0,0,0" VerticalAlignment="Center" Width="1297" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" >
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="426" Margin="290,136,0,0" VerticalAlignment="Top" Width="1296" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" >
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn>
