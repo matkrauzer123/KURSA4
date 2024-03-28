@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KURSA4.WinFolder"
         mc:Ignorable="d"
-        Title="Trash" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="Корзина" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

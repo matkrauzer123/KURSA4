@@ -50,36 +50,36 @@ namespace KURSA4.WinFolder
         private void MIKatalog_Click(object sender, RoutedEventArgs e)
         {
             WinOpen winOpen = new WinOpen();
-            winOpen.ShowDialog();
-            Close();
+           
+            Close(); winOpen.ShowDialog();
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
-            winSverlInstrument.ShowDialog();
-            Close();
+            
+            Close(); winSverlInstrument.ShowDialog();
         }
 
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinStroitOtdelInstrument winStroitOtdelInstrument = new WinStroitOtdelInstrument();
-            winStroitOtdelInstrument.ShowDialog();
-            Close();
+           
+            Close(); winStroitOtdelInstrument.ShowDialog();
         }
 
         private void MIReshInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinReshInstrument winReshInstrument = new WinReshInstrument();
-            winReshInstrument.ShowDialog();
-            Close();
+           
+            Close(); winReshInstrument.ShowDialog();
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinRuchInstrument winRuchInstrument = new WinRuchInstrument();
-            winRuchInstrument.ShowDialog();
-            Close();
+           
+            Close(); winRuchInstrument.ShowDialog();
         }
 
         private void MISlesarInstrument_Click(object sender, RoutedEventArgs e)
@@ -90,57 +90,57 @@ namespace KURSA4.WinFolder
         private void MISvarOborudovanie_Click(object sender, RoutedEventArgs e)
         {
             WinSvarOborudovanie winSvarOborudovanie = new WinSvarOborudovanie();
-            winSvarOborudovanie.ShowDialog();
-            Close();
+           
+            Close(); winSvarOborudovanie.ShowDialog();
         }
 
         private void MIRashodMaterial_Click(object sender, RoutedEventArgs e)
         {
             WinRashodMaterial winRashodMaterial = new WinRashodMaterial();
-            winRashodMaterial.ShowDialog();
-            Close();
+           
+            Close(); winRashodMaterial.ShowDialog();
         }
 
         private void MIOsnastka_Click(object sender, RoutedEventArgs e)
         {
             WinOsnastka winOsnastka = new WinOsnastka();
-            winOsnastka.ShowDialog();
-            Close();
+           
+            Close(); winOsnastka.ShowDialog();
         }
 
         private void MIAbrazMaterial_Click(object sender, RoutedEventArgs e)
         {
             WinAbrazMaterial winAbrazMaterial = new WinAbrazMaterial();
-            winAbrazMaterial.ShowDialog();
-            Close();
+           
+            Close(); winAbrazMaterial.ShowDialog();
         }
 
         private void MISadInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinSadInstrument winSadInstrument = new WinSadInstrument();
-            winSadInstrument.ShowDialog();
-            Close();
+           
+            Close(); winSadInstrument.ShowDialog();
         }
 
         private void MIZashita_Click(object sender, RoutedEventArgs e)
         {
             WinZashita winZashita = new WinZashita();
-            winZashita.ShowDialog();
-            Close();
+            
+            Close(); winZashita.ShowDialog();
         }
 
         private void MIOther_Click(object sender, RoutedEventArgs e)
         {
             WinOther winOther = new WinOther();
-            winOther.ShowDialog();
-            Close();
+          
+            Close(); winOther.ShowDialog();
         }
 
         private void MIMaliarInstrument_Click(object sender, RoutedEventArgs e)
         {
             WinMaliarInstrument winMaliarInstrument = new WinMaliarInstrument();
-            winMaliarInstrument.ShowDialog();
-            Close();
+         
+            Close(); winMaliarInstrument.ShowDialog();
         }
 
         private void BCheck_Click(object sender, RoutedEventArgs e)
@@ -161,8 +161,8 @@ namespace KURSA4.WinFolder
                     break;
                 default:
                     Trash trash = new Trash();
-                    trash.Show();
-                    Close();
+                    
+                    Close(); trash.Show();
                     break;
             }
             database.sqlClose();

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WinFolder\nzakaza.cs" />
     <Compile Include="WinFolder\WinAbrazMaterial.xaml.cs">
       <DependentUpon>WinAbrazMaterial.xaml</DependentUpon>
     </Compile>

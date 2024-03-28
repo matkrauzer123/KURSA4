@@ -165,19 +165,21 @@ namespace KURSA4.WinFolder
             else
             {
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+               nzakaza nzakaza = new nzakaza();
+                int id = nzakaza.GetId();
+         
+                string filePath = System.IO.Path.Combine(desktopPath, $"заказ №{id}.txt");
+                id++;
+                nzakaza.Setid(id);
 
-                // Создаем универсальный путь к файлу на рабочем столе
-                string filePath = System.IO.Path.Combine(desktopPath, "заказ.txt");
 
-
-
-                // Создаем новый файл или перезаписываем существующий
+                
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
                     // Записываем текст в файл
                     foreach (DataRow row in dt.Rows)
                     {
-                        // Записываем данные из DataTable в файл
+                       
                         writer.WriteLine(row["Название"] + " - " + row["Цена"] + "р.");
                     }
                     writer.WriteLine($"\n\n\t\t Сумма: {LPriceFinal.Content}");
@@ -214,6 +216,7 @@ namespace KURSA4.WinFolder
         private void BBck_Click(object sender, RoutedEventArgs e)
         {
            WinOpen winOpen = new WinOpen();
+            Close();
             winOpen.ShowDialog();
             
         }
