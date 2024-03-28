@@ -152,7 +152,7 @@
             </Image.RenderTransform>
         </Image>
         <Button x:Name="BGubka" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="358,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BGubka_Click"/>
-        <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="358,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="350 р." IsHitTestVisible="False"/>
+        <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="358,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="350 р." IsHitTestVisible="False" FontFamily="Ebrima"/>
         <Label Content="БРУСОК АБРАЗИВНЫЙ  " HorizontalAlignment="Left" Height="105" Margin="731,519,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="302" Margin="731,223,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/Brusok.png"/>
         <Button x:Name="BBrusok" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="731,624,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BBrusok_Click"/>

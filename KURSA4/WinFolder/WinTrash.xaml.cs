@@ -216,8 +216,10 @@ namespace KURSA4.WinFolder
         private void BBck_Click(object sender, RoutedEventArgs e)
         {
            WinOpen winOpen = new WinOpen();
-            Close();
             winOpen.ShowDialog();
+            Hide();
+           
+          
             
         }
 
