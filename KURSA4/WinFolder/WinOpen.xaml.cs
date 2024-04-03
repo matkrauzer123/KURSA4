@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -29,6 +30,15 @@ namespace KURSA4.WinFolder
         }
         static int price;
         DataBase database = new DataBase();
+        DataTable dt = new DataTable();
+        SqlDataAdapter adapter;
+        public class ItemModel
+        {
+            public Image ImagePath { get; set; }
+            public string Name { get; set; }
+            public decimal Price { get; set; }
+        }
+
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
            WinStroitOtdelInstrument winStroitOtdelInstrument = new WinStroitOtdelInstrument();
@@ -344,12 +354,23 @@ namespace KURSA4.WinFolder
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
-
+            adapter = new SqlDataAdapter("Select IdTrash,NameTrash from Trash", database.GetConnection());
+            database.sqlOpen();
+            adapter.Fill(dt);
+            dt.Columns[0].ColumnName = "ID продукта";
+            dt.Columns[1].ColumnName = "Название";
+            dt.Columns[2].ColumnName = "Цена";
+            listView1.ItemsSource = dt.DefaultView;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

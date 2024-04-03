@@ -115,14 +115,14 @@
             </DataGrid.RenderTransform>
 
         </DataGrid>
-        <ListView HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded">
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Column 1"  Width="100"/>
+                    <GridViewColumn Header="Column 2"  Width="250"/>
+                    <GridViewColumn Header="Column 3"  Width="100"/>
                 </GridView>
             </ListView.View>
-            <ListBoxItem Content="ghbndtn" FontSize="18" Background="#FFAB3232"/>
-            <ListViewItem Content="ghbdtn"/>
         </ListView>
 
     </Grid>
