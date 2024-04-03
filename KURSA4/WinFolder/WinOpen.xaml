@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KURSA4.WinFolder"
         mc:Ignorable="d"
-        Title="Главная" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#FF210D6B" Loaded="WinOpen1_Loaded" Closing="WinOpen1_Closing">
+       WindowStyle="None" Title="Главная" Height="1015" Width="1930" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#FF210D6B" Loaded="WinOpen1_Loaded" Closing="WinOpen1_Closing">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -64,7 +64,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Label Content="Буры SDS MAX 40X1000" HorizontalAlignment="Left" Height="105" Margin="398,647,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
         <Menu x:Name="MItems" HorizontalAlignment="Left" Height="1094" VerticalAlignment="Center" Width="299" Foreground="#FF512DD6" Background="#FF3361BD">
             <MenuItem x:Name="MIKatalog" Header="Каталог" Foreground="#FFFFBD07" FontSize="24" FontFamily="Arial" Margin="60,40,2,0" IsHitTestVisible="False" FontWeight="Bold"/>
             <MenuItem x:Name="MISverlInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Сверлильный инструмент" Margin="20,50,0,0" Click="MISverlInstrument_Click"/>
@@ -83,50 +82,48 @@
         </Menu>
         <Image HorizontalAlignment="Left" Height="154" Margin="304,10,0,0" VerticalAlignment="Top" Width="284" Source="/ImagesFolder/logo_310.png"/>
         <Button x:Name="BCheck" Content="ОПЛАТИТЬ" HorizontalAlignment="Left" Height="267" Margin="1510,824,0,0" VerticalAlignment="Top" Width="420" FontSize="48" FontFamily="Arial" FontWeight="Bold" Background="#FF00CAFF" Foreground="White" FontStyle="Italic" BorderThickness="0,0,1,1" ClickMode="Press" BorderBrush="Black" Click="BCheck_Click"/>
-        <Label Content="Хиты продаж" HorizontalAlignment="Left" Height="143" Margin="737,213,0,0" VerticalAlignment="Top" Width="594" FontSize="72" Foreground="White"/>
-        <Image HorizontalAlignment="Left" Height="304" Margin="398,349,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/SDS_MAX_40X_1000.png" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="0.779"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-1.986"/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Button x:Name="B40X1000" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="398,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X1000_Click"/>
-        <TextBox x:Name="TBPrice" HorizontalAlignment="Left" Height="46" Margin="398,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="8 319 р." IsHitTestVisible="False"/>
+        <Label Content="Хиты продаж" HorizontalAlignment="Left" Height="143" Margin="875,10,0,0" VerticalAlignment="Top" Width="594" FontSize="72" Foreground="White"/>
         <Label x:Name="LPrice" Content="" HorizontalAlignment="Left" Height="62" Margin="1654,766,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Foreground="Red" FontWeight="Bold" FontFamily="Calibri" FontStyle="Italic"/>
-        <Label Content="БУРЫ SDS MAX 40Х600 " HorizontalAlignment="Left" Height="112" Margin="771,640,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="289" Margin="771,351,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/SDS_MAX_40X_1000.png"/>
-        <Button x:Name="B40X600" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="771,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X600_Click"/>
-        <TextBox x:Name="TBPrice2" HorizontalAlignment="Left" Height="46" Margin="771,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="5 664 р." IsHitTestVisible="False"/>
-        <Label x:Name="LL" Content="РУЛЕТКА VERTEXTOOLS " HorizontalAlignment="Left" Height="105" Margin="1146,647,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="302" Margin="1146,351,0,0" VerticalAlignment="Top" Width="291" Source="/ImagesFolder/ruletka.png" Stretch="Fill" StretchDirection="DownOnly"/>
-        <Button x:Name="BRulet" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1146,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BRulet_Click"/>
-        <TextBox x:Name="TBPrice1" HorizontalAlignment="Left" Height="46" Margin="1146,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="471 р." IsHitTestVisible="False"/>
-        <Label Content="Буры SDS MAX 40X1000" HorizontalAlignment="Left" Height="105" Margin="398,647,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="304" Margin="398,349,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/SDS_MAX_40X_1000.png" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
+        <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="#FF09E3FF" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="583" Margin="367,508,0,0" VerticalAlignment="Top" Width="1102" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" >
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
-                    <SkewTransform AngleX="0.779"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-1.986"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-720"/>
+                    <TranslateTransform/>
                 </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Button x:Name="B40X1000_Копировать" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="398,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X1000_Click"/>
-        <TextBox x:Name="TBPrice_Копировать" HorizontalAlignment="Left" Height="46" Margin="398,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="8 319 р." IsHitTestVisible="False"/>
-        <Label Content="БУРЫ SDS MAX 40Х600 " HorizontalAlignment="Left" Height="112" Margin="771,640,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="289" Margin="771,351,0,0" VerticalAlignment="Top" Width="291" Stretch="Fill" Source="/ImagesFolder/SDS_MAX_40X_1000.png"/>
-        <Button x:Name="B40X600_Копировать" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="771,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="B40X600_Click"/>
-        <TextBox x:Name="TBPrice2_Копировать" HorizontalAlignment="Left" Height="46" Margin="771,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="5 664 р." IsHitTestVisible="False"/>
-        <Label x:Name="LL_Копировать" Content="РУЛЕТКА VERTEXTOOLS " HorizontalAlignment="Left" Height="105" Margin="1146,647,0,0" VerticalAlignment="Top" Width="291" Background="#FFE6E6E6" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="302" Margin="1146,351,0,0" VerticalAlignment="Top" Width="291" Source="/ImagesFolder/ruletka.png" Stretch="Fill" StretchDirection="DownOnly"/>
-        <Button x:Name="BRulet_Копировать" Style="{StaticResource ButtonStyle1}" Content="Добавить" HorizontalAlignment="Left" Height="69" Margin="1146,752,0,0" VerticalAlignment="Top" Width="291" BorderBrush="White" Background="White" FontSize="18" FontStretch="SemiCondensed" FontWeight="DemiBold" FontStyle="Italic" Foreground="#FF2311FF" Click="BRulet_Click"/>
-        <TextBox x:Name="TBPrice1_Копировать" HorizontalAlignment="Left" Height="46" Margin="1146,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="291" BorderBrush="Black" Foreground="#FFFB1111" Background="#FF383535" SelectionTextBrush="Black" FontSize="36" Text="471 р." IsHitTestVisible="False"/>
-        <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="#FF09E3FF" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+            </DataGrid.RenderTransform>
+
+        </DataGrid>
+        <ListView HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListBoxItem Content="ghbndtn" FontSize="18" Background="#FFAB3232"/>
+            <ListViewItem Content="ghbdtn"/>
+        </ListView>
 
     </Grid>
 </Window>

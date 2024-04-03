@@ -331,5 +331,25 @@ namespace KURSA4.WinFolder
         {
             
         }
+
+        private void TBPrice1_Копировать_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
