@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TopCar;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
 
 namespace KURSA4.WinFolder
 {
@@ -32,9 +35,9 @@ namespace KURSA4.WinFolder
         DataBase database = new DataBase();
         DataTable dt = new DataTable();
         SqlDataAdapter adapter;
-        public class ItemModel
+        public class Vid
         {
-            public Image ImagePath { get; set; }
+            public BitmapImage ImagePath { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
         }
@@ -49,7 +52,7 @@ namespace KURSA4.WinFolder
 
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
-            database.sqlOpen();
+        /*    database.sqlOpen();
             string  query = $"select  PriceUsers FROM PriceUser ";
             SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();    
@@ -62,7 +65,7 @@ namespace KURSA4.WinFolder
             }
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
          
-            database.sqlClose();
+            database.sqlClose();*/
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
@@ -354,13 +357,42 @@ namespace KURSA4.WinFolder
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
-            adapter = new SqlDataAdapter("Select IdTrash,NameTrash from Trash", database.GetConnection());
             database.sqlOpen();
-            adapter.Fill(dt);
-            dt.Columns[0].ColumnName = "ID продукта";
-            dt.Columns[1].ColumnName = "Название";
-            dt.Columns[2].ColumnName = "Цена";
-            listView1.ItemsSource = dt.DefaultView;
+            string q = "SELECT ImageTrash FROM TT";
+            SqlCommand command = new SqlCommand(q, database.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                byte[] imageData = (byte[])row["ImageTrash"];
+
+                // Преобразование массива байтов в изображение
+                using (MemoryStream stream = new MemoryStream(imageData))
+                {
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = stream;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.EndInit();
+
+                    // Создание элемента управления Image для отображения изображения
+                    System.Windows.Controls.Image img = new System.Windows.Controls.Image();
+                    img.Source = image;
+
+                    List<Vid> items = new List<Vid>();
+                    Vid vid = new Vid
+                    {
+                        ImagePath = image,
+                        Name = "Название",
+                        Price = 0
+                    };
+                    items.Add(vid);
+
+                    listView1.ItemsSource = items;
+                }
+            }
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
