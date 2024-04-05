@@ -19,6 +19,9 @@ using System.Windows.Shapes;
 using TopCar;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
+using System.Xml.Linq;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace KURSA4.WinFolder
 {
@@ -30,11 +33,14 @@ namespace KURSA4.WinFolder
         public WinOpen()
         {
             InitializeComponent();
+
         }
+        List<Vid> items = new List<Vid>();
         static int price;
         DataBase database = new DataBase();
         DataTable dt = new DataTable();
         SqlDataAdapter adapter;
+        DataTable dataTable = new DataTable();
         public class Vid
         {
             public BitmapImage ImagePath { get; set; }
@@ -44,126 +50,101 @@ namespace KURSA4.WinFolder
 
         private void MIStroitOtdelInstrument_Click(object sender, RoutedEventArgs e)
         {
-           WinStroitOtdelInstrument winStroitOtdelInstrument = new WinStroitOtdelInstrument();
-          
-            Close();
-            winStroitOtdelInstrument.ShowDialog();
+            LLabel.Content = "Строительно-отделочный инструмент";
+            ShowList("Строительно-отделочный инструмент");
         }
 
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
-        /*    database.sqlOpen();
-            string  query = $"select  PriceUsers FROM PriceUser ";
-            SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
-           SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();    
-            sqlDataAdapter.SelectCommand = sqlprice;
-           var a = sqlprice.ExecuteScalar();
-           price = Convert.ToInt32(a);  
-            if (price!=0)
-            {
-                LPrice.Content = price;
-            }
+            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash from Trash", database.GetConnection());
+            database.sqlOpen();
+            adapter.Fill(dt);
+            dt.Columns[0].ColumnName = "ID продукта";
+            dt.Columns[1].ColumnName = "Название";
+            dt.Columns[2].ColumnName = "Цена";
+            dt.Columns[3].ColumnName = "Количество";
+            DGTrash.IsReadOnly = true;
+            DGTrash.ItemsSource = dt.DefaultView;
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
-         
-            database.sqlClose();*/
+
+
         }
 
         private void MISverlInstrument_Click(object sender, RoutedEventArgs e)
         {
-           
-            WinSverlInstrument winSverlInstrument = new WinSverlInstrument();
-           
-            Close();
-            winSverlInstrument.ShowDialog();
+
+            LLabel.Content = "Сверлильный инструмент";
+            ShowList("Сверлильный инструмент");
+
+            // Close();
+            //  winSverlInstrument.ShowDialog();
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
         {
-            
-            WinRuchInstrument winRuchInstrument = new WinRuchInstrument();
-            Close();
-            winRuchInstrument.ShowDialog();
-           
+            LLabel.Content = "Ручной инструмент";
+            ShowList("Ручной инструмент");
+
         }
 
         private void MIMaliarInstrument_Click(object sender, RoutedEventArgs e)
         {
-            WinMaliarInstrument winMaliarInstrument = new WinMaliarInstrument();
-          
-            Close();
-            winMaliarInstrument.ShowDialog();
+            LLabel.Content = "Малярный инструмент";
+            ShowList("Малярный инструмент");
         }
 
         private void MISlesarInstrument_Click(object sender, RoutedEventArgs e)
         {
-          WinSlesarInstrument winSlesarInstrument = new WinSlesarInstrument();
-           
-            Close();
-            winSlesarInstrument.ShowDialog();
+            LLabel.Content = "Слесарный инструмент";
+            ShowList("Слесарный инструмент");
         }
 
         private void MISvarOborudovanie_Click(object sender, RoutedEventArgs e)
         {
-          WinSvarOborudovanie  winSvarOborudovanie = new WinSvarOborudovanie();
-           
-            Close();
-            winSvarOborudovanie.ShowDialog();
+            LLabel.Content = "Сварочное оборудование";
+            ShowList("Сварочное оборудование");
         }
 
         private void MIRashodMaterial_Click(object sender, RoutedEventArgs e)
         {
-           WinRashodMaterial winRashodMaterial = new WinRashodMaterial();
-            
-            Close();
-            winRashodMaterial.ShowDialog();
+            LLabel.Content = "Расходные материалы";
+            ShowList("Расходные материалы");
         }
 
         private void MIOsnastka_Click(object sender, RoutedEventArgs e)
         {
-            WinOsnastka winOsnastka = new WinOsnastka();
-             
-            Close();
-            winOsnastka.ShowDialog();
+            LLabel.Content = "Оснастка";
+            ShowList("Оснастка");
         }
 
         private void MIAbrazMaterial_Click(object sender, RoutedEventArgs e)
         {
-           WinAbrazMaterial winAbrazMaterial = new WinAbrazMaterial();
-          
-            Close();
-            winAbrazMaterial.ShowDialog();
+            LLabel.Content = "Абразивный материал";
+            ShowList("Абразивный материал");
         }
 
         private void MISadInstrument_Click(object sender, RoutedEventArgs e)
         {
-           WinSadInstrument winSadInstrument = new WinSadInstrument();  
-          
-            Close();
-            winSadInstrument.ShowDialog();
+            LLabel.Content = "Садовый инструмент";
+            ShowList("Садовый инструмент");
         }
 
         private void MIZashita_Click(object sender, RoutedEventArgs e)
         {
-           WinZashita winZashita = new WinZashita();
-          
-            Close();
-            winZashita.ShowDialog();
+            LLabel.Content = "Защита";
+            ShowList("Защита");
         }
 
         private void MIOther_Click(object sender, RoutedEventArgs e)
         {
-           WinOther winOther = new WinOther();
-           
-            Close();
-            winOther.ShowDialog();
+            LLabel.Content = "Прочие инструменты";
+            ShowList("Прочие инструменты");
         }
 
         private void MIReshInstrument_Click(object sender, RoutedEventArgs e)
         {
-           WinReshInstrument winReshInstrument = new WinReshInstrument();
-            
-            Close();
-            winReshInstrument.ShowDialog();
+            LLabel.Content = "Режущий инструмент";
+            ShowList("Режущий инструмент");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -197,7 +178,7 @@ namespace KURSA4.WinFolder
                 query = $"insert into Trash(NameTrash,PriceTrash) values('Буры SDS MAX 40X1000','8319')";
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
-             
+
                 sqlDataAdapter.Fill(dataTable1);
                 DataTable dt = new DataTable();
                 query = $"update  PriceUser set PriceUsers =PriceUsers+8319";
@@ -326,23 +307,23 @@ namespace KURSA4.WinFolder
 
             switch (a)
             {
-                case 0 :
+                case 0:
                     MessageBox.Show("Корзина пуста!", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 default:
                     Trash trash = new Trash();
-                   
+
                     Close();
                     trash.Show();
                     break;
             }
-           database.sqlClose();
-           
+            database.sqlClose();
+
         }
 
         private void WinOpen1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
+
         }
 
         private void TBPrice1_Копировать_TextChanged(object sender, TextChangedEventArgs e)
@@ -357,8 +338,24 @@ namespace KURSA4.WinFolder
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
+            ShowList("Каталог");
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void ShowList(string katalog)
+        {
+            listView1.ItemsSource = null;
+            items.Clear();
             database.sqlOpen();
-            string q = "SELECT ImageTrash FROM TT";
+            string q = $"Select ImageTools,NameTools,PriceTools from Tools where CategoryTools='{katalog}'";
             SqlCommand command = new SqlCommand(q, database.GetConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable dataTable = new DataTable();
@@ -366,7 +363,7 @@ namespace KURSA4.WinFolder
 
             foreach (DataRow row in dataTable.Rows)
             {
-                byte[] imageData = (byte[])row["ImageTrash"];
+                byte[] imageData = (byte[])row["ImageTools"];
 
                 // Преобразование массива байтов в изображение
                 using (MemoryStream stream = new MemoryStream(imageData))
@@ -381,28 +378,188 @@ namespace KURSA4.WinFolder
                     System.Windows.Controls.Image img = new System.Windows.Controls.Image();
                     img.Source = image;
 
-                    List<Vid> items = new List<Vid>();
+
                     Vid vid = new Vid
                     {
                         ImagePath = image,
-                        Name = "Название",
-                        Price = 0
+                        Name = (string)row["NameTools"],
+                        Price = (int)row["PriceTools"]
                     };
                     items.Add(vid);
 
-                    listView1.ItemsSource = items;
+
+                }
+
+            }
+            listView1.ItemsSource = items;
+
+            database.sqlClose();
+        }
+
+        private void MIKatalog_Click(object sender, RoutedEventArgs e)
+        {
+            LLabel.Content = "Хиты продаж";
+            ShowList("Каталог");
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void listView1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+            bool povtor = false;
+            database.sqlOpen();
+           
+            var vid = (Vid)listView1.SelectedItem;
+            foreach (DataRow row in dt.Rows)
+            {
+                // Предполагаем, что ваш элемент имеет свойство Name для сравнения
+                if ((string)row["Название"] == vid.Name)
+                {
+                    povtor = true;
+                    break; // Нашли совпадение, выходим из цикла
                 }
             }
-        }
+            if (povtor)
+            {
+                string qadd = $"update Trash set AmountTrash=AmountTrash+1 where NameTrash='{vid.Name}'";
+                SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
+                adapter.SelectCommand = sqladd;
+                sqladd.ExecuteNonQuery();
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            }
+            else
+            {
+                string query1 = $"insert into Trash(NameTrash,PriceTrash,AmountTrash)values('{vid.Name}',{vid.Price},1)";
+                SqlCommand sqlTrash = new SqlCommand(query1, database.GetConnection());
+                adapter.SelectCommand = sqlTrash;
+                sqlTrash.ExecuteNonQuery();
+               
+            }
+            string trash = $"Select * from Trash";
+            SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
+            adapter.SelectCommand = sqlTrash1;
+            adapter.Fill(dataTable);
+            dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
+            dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
+            dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
+            dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+
+
+            DGTrash.ItemsSource = dataTable.DefaultView;
+            dt.Rows.Clear();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DataRow newRow = dt.NewRow();
+                newRow["ID продукта"] = row["ID продукта"];
+                newRow["Название"] = row["Название"];
+                newRow["Цена"] = row["Цена"];
+                newRow["Количество"] = row["Количество"];
+
+                dt.Rows.Add(newRow);
+            }
+            database.sqlClose();
+
+        }
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
+            DataTable dataTable = new DataTable();
+            database.sqlOpen();
+            Button senderButton = sender as Button;
+            DataRowView dataRowView = senderButton.DataContext as DataRowView;
+            int id = Convert.ToInt32( dataRowView.Row["ID продукта"].ToString());
+            int amount = Convert.ToInt32(dataRowView.Row["Количество"].ToString());
+            string qadd = $"update Trash set AmountTrash={amount}+1 where IdTrash={id}";
+            SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
+            adapter.SelectCommand = sqladd;
+            sqladd.ExecuteNonQuery();
+            string trash = $"Select * from Trash";
+            SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
+            adapter.SelectCommand = sqlTrash1;
+
+            adapter.Fill(dataTable);
+            dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
+            dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
+            dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
+            dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+
+            DGTrash.ItemsSource = dataTable.DefaultView;
+            dt.Rows.Clear();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DataRow newRow = dt.NewRow();
+                newRow["ID продукта"] = row["ID продукта"];
+                newRow["Название"] = row["Название"];
+                newRow["Цена"] = row["Цена"];
+                newRow["Количество"] = row["Количество"];
+
+                dt.Rows.Add(newRow);
+            }
+            database.sqlClose();
+        }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            Button senderButton = sender as Button;
+            DataRowView dataRowView = senderButton.DataContext as DataRowView;
+            int id = Convert.ToInt32(dataRowView.Row["ID продукта"].ToString());
+            DataTable dataTable = new DataTable();
+            bool povtor = false;
+            database.sqlOpen();
+
+           
+            foreach (DataRow row in dt.Rows)
+            {
+                // Предполагаем, что ваш элемент имеет свойство Name для сравнения
+                if ((string)row["Название"] == (string)dataRowView["Название"] && (int)row["Количество"]!=1)
+                {
+                    povtor = true;
+                    break; // Нашли совпадение, выходим из цикла
+                }
+            }
+            if (povtor)
+            {
+                string qadd = $"update Trash set AmountTrash=AmountTrash-1 where NameTrash='{dataRowView["Название"]}'";
+                SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
+                adapter.SelectCommand = sqladd;
+                sqladd.ExecuteNonQuery();
+
+            }
+            else
+            {
+                string query = $"Delete from Trash where IdTrash={Convert.ToInt32(id)}";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                adapter.SelectCommand = sqlTrash;
+                sqlTrash.ExecuteNonQuery();
+                
+
+            }
+            string trash = $"Select * from Trash";
+            SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
+            adapter.SelectCommand = sqlTrash1;
+            adapter.Fill(dataTable);
+            dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
+            dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
+            dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
+            dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
             
-        }
 
-        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+            DGTrash.ItemsSource = dataTable.DefaultView;
+            dt.Rows.Clear();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DataRow newRow = dt.NewRow();
+                newRow["ID продукта"] = row["ID продукта"];
+                newRow["Название"] = row["Название"];
+                newRow["Цена"] = row["Цена"];
+                newRow["Количество"] = row["Количество"];
 
+                dt.Rows.Add(newRow);
+            }
+            database.sqlClose();
         }
     }
 }

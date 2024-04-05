@@ -65,7 +65,7 @@
     </Window.Resources>
     <Grid>
         <Menu x:Name="MItems" HorizontalAlignment="Left" Height="1094" VerticalAlignment="Center" Width="299" Foreground="#FF512DD6" Background="#FF3361BD">
-            <MenuItem x:Name="MIKatalog" Header="Каталог" Foreground="#FFFFBD07" FontSize="24" FontFamily="Arial" Margin="60,40,2,0" IsHitTestVisible="False" FontWeight="Bold"/>
+            <MenuItem x:Name="MIKatalog" Header="Каталог" Foreground="#FFFFBD07" FontSize="24" FontFamily="Arial" Margin="60,40,2,0" FontWeight="Bold" Click="MIKatalog_Click"/>
             <MenuItem x:Name="MISverlInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Сверлильный инструмент" Margin="20,50,0,0" Click="MISverlInstrument_Click"/>
             <MenuItem x:Name="MIStroitOtdelInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="" Margin="20,50,0,0" Click="MIStroitOtdelInstrument_Click"/>
             <MenuItem x:Name="MIReshInstrument" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="18" Header="Режущий инструмент" Margin="20,50,0,0" Click="MIReshInstrument_Click"/>
@@ -82,16 +82,17 @@
         </Menu>
         <Image HorizontalAlignment="Left" Height="154" Margin="304,10,0,0" VerticalAlignment="Top" Width="284" Source="/ImagesFolder/logo_310.png"/>
         <Button x:Name="BCheck" Content="ОПЛАТИТЬ" HorizontalAlignment="Left" Height="267" Margin="1510,824,0,0" VerticalAlignment="Top" Width="420" FontSize="48" FontFamily="Arial" FontWeight="Bold" Background="#FF00CAFF" Foreground="White" FontStyle="Italic" BorderThickness="0,0,1,1" ClickMode="Press" BorderBrush="Black" Click="BCheck_Click"/>
-        <Label Content="Хиты продаж" HorizontalAlignment="Left" Height="143" Margin="875,10,0,0" VerticalAlignment="Top" Width="594" FontSize="72" Foreground="White"/>
+        <Label x:Name="LLabel" Content="Хиты продаж" HorizontalAlignment="Left" Height="187" Margin="667,10,0,0" VerticalAlignment="Top" Width="1165" FontSize="66" Foreground="White"/>
         <Label x:Name="LPrice" Content="" HorizontalAlignment="Left" Height="62" Margin="1654,766,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Foreground="Red" FontWeight="Bold" FontFamily="Calibri" FontStyle="Italic"/>
         <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="#FF09E3FF" FontWeight="Bold" FontFamily="Comic Sans MS"/>
-        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left" Height="583" Margin="367,508,0,0" VerticalAlignment="Top" Width="1102" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" >
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left"  Height="583" Margin="367,508,0,0" VerticalAlignment="Top" Width="1102" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" >
             <DataGrid.Columns>
 
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Действие">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-
+                            <Button Content="Удалить" Click="Delete_Click"/>
+                     
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -100,7 +101,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-
+                            <Button Content="Добавить" Click="Add_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -115,18 +116,18 @@
             </DataGrid.RenderTransform>
 
         </DataGrid>
-        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1">
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1" MouseDoubleClick="listView1_MouseDoubleClick" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Column 1" Width="100">
+                    <GridViewColumn Header="Изображение" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding ImagePath}" Width="50" Height="50"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Column 2" DisplayMemberBinding="{Binding Name}" Width="100"/>
-                    <GridViewColumn Header="Column 3" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="50"/>
                 </GridView>
             </ListView.View>
         </ListView>
