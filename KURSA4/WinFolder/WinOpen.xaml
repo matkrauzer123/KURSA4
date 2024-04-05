@@ -92,7 +92,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Удалить" Click="Delete_Click"/>
-                     
+
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -116,7 +116,7 @@
             </DataGrid.RenderTransform>
 
         </DataGrid>
-        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1487" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1" MouseDoubleClick="listView1_MouseDoubleClick" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp">
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1102" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1" MouseDoubleClick="listView1_MouseDoubleClick" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Изображение" Width="100">
@@ -131,6 +131,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="BBack" Content="Закончить смену" HorizontalAlignment="Left" Height="209" Margin="1534,65,0,0" VerticalAlignment="Top" Width="372"/>
+        <Button x:Name="BChange" Content="Сменить сотрудника" HorizontalAlignment="Left" Height="209" Margin="1534,314,0,0" VerticalAlignment="Top" Width="372"/>
 
     </Grid>
 </Window>

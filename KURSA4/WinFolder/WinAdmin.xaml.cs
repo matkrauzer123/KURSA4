@@ -34,7 +34,7 @@ namespace KURSA4.WinFolder
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            string query = $"select   PasswordAdmin from Admin where   PasswordAdmin = '{passUser}'";
+            string query = $"select   PasswordEmployee from Employee where   PasswordEmployee = '{passUser}'";
             SqlCommand command = new SqlCommand(query, dataBase.GetConnection());
             sqlDataAdapter.SelectCommand = command;
 
@@ -44,11 +44,11 @@ namespace KURSA4.WinFolder
             int a = dt.Rows.Count;
             if (a==1)
             {
-                string query1 = $"select   NameAdmin from Admin where   PasswordAdmin = '{passUser}'";
+                string query1 = $"select   NameEmployee from Employee where   PasswordEmployee = '{passUser}'";
                 SqlCommand command1 = new SqlCommand(query1, dataBase.GetConnection());
                 sqlDataAdapter.SelectCommand = command1;
                 string name = (string)command1.ExecuteScalar();
-                query = $"insert into [End](EndAdminName,EndPrice) values('{name}',0)";
+                query = $"insert into [End](NameEnd,SumEnd) values('{name}',0)";
                 SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
                 sqlDataAdapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();

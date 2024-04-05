@@ -323,7 +323,17 @@ namespace KURSA4.WinFolder
 
         private void WinOpen1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            database.sqlOpen();
+            string query = $"update [End] set DateEnd ='{DateTime.Today.Date.ToShortDateString()} ' WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+            SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+            adapter.SelectCommand = sqlTrash;
+            sqlTrash.ExecuteNonQuery();
+            string del = $"Delete from Trash";
+            SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
+            adapter.SelectCommand = sqldel;
+            sqldel.ExecuteNonQuery();
 
+          
         }
 
         private void TBPrice1_Копировать_TextChanged(object sender, TextChangedEventArgs e)

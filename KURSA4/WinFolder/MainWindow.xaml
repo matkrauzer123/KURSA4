@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KURSA4"
         mc:Ignorable="d"
-        Title="Открытие" Height="1030" ResizeMode="NoResize" Width="1930" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    WindowStyle="None"    Title="Открытие" Height="1030" ResizeMode="NoResize" Width="1930" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
