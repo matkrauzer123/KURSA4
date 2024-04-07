@@ -131,8 +131,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="BBack" Content="Закончить смену" HorizontalAlignment="Left" Height="209" Margin="1534,65,0,0" VerticalAlignment="Top" Width="372"/>
-        <Button x:Name="BChange" Content="Сменить сотрудника" HorizontalAlignment="Left" Height="209" Margin="1534,314,0,0" VerticalAlignment="Top" Width="372"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="204" Margin="1618,2,0,0" VerticalAlignment="Top" Width="312" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

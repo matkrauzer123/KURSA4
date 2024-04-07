@@ -449,6 +449,8 @@ namespace KURSA4.WinFolder
                 sqlTrash.ExecuteNonQuery();
                
             }
+            price += (int)vid.Price;
+            LPrice.Content = price.ToString();
             string trash = $"Select * from Trash";
             SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
             adapter.SelectCommand = sqlTrash1;
@@ -505,6 +507,8 @@ namespace KURSA4.WinFolder
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
                 newRow["Количество"] = row["Количество"];
+                price += (int)newRow["Цена"];
+                LPrice.Content = price;
 
                 dt.Rows.Add(newRow);
             }
@@ -536,7 +540,8 @@ namespace KURSA4.WinFolder
                 SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
                 adapter.SelectCommand = sqladd;
                 sqladd.ExecuteNonQuery();
-
+                price -= (int)dataRowView["Цена"];
+                LPrice.Content = price;
             }
             else
             {
@@ -544,7 +549,8 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 adapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();
-                
+                price -= (int)dataRowView["Цена"];
+                LPrice.Content = price;
 
             }
             string trash = $"Select * from Trash";
@@ -565,11 +571,17 @@ namespace KURSA4.WinFolder
                 newRow["ID продукта"] = row["ID продукта"];
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
-                newRow["Количество"] = row["Количество"];
-
+                newRow["Количество"] = row["Количество"];             
                 dt.Rows.Add(newRow);
             }
+
+
             database.sqlClose();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("праверка");
         }
     }
 }
