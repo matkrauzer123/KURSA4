@@ -131,7 +131,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" Height="204" Margin="1618,2,0,0" VerticalAlignment="Top" Width="312" Click="Button_Click_2"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="204" Margin="1618,0,0,809" VerticalAlignment="Bottom" Width="312" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
