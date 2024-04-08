@@ -323,7 +323,7 @@ namespace KURSA4.WinFolder
             SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
             adapter.SelectCommand = sqlTrash;
             sqlTrash.ExecuteNonQuery();
-         
+            string del = $"Delete from Trash";
             SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
             adapter.SelectCommand = sqldel;
             sqldel.ExecuteNonQuery();
