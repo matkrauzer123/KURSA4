@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="Авторизация" Height="316" Width="600" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF210D6B">
-        <PasswordBox x:Name="PBPassword" HorizontalAlignment="Left" Height="34" Margin="59,111,0,0" VerticalAlignment="Top" Width="268" FontSize="24"/>
-        <Label Content="Ваш Пароль" HorizontalAlignment="Left" Height="36" Margin="42,75,0,0" VerticalAlignment="Top" Width="101" Foreground="White"/>
-        <Button x:Name="BCurrect" Content="Подтведрить" HorizontalAlignment="Left" Height="33" Margin="227,205,0,0" VerticalAlignment="Top" Width="111" BorderBrush="White" FontWeight="Bold" FontFamily="Arial" Click="BCurrect_Click"/>
-
+        <PasswordBox x:Name="PBPassword" HorizontalAlignment="Left" Height="34" Margin="59,168,0,0" VerticalAlignment="Top" Width="268" FontSize="24"/>
+        <Label Content="Ваш Пароль" HorizontalAlignment="Left" Height="36" Margin="42,0,0,0" VerticalAlignment="Center" Width="101" Foreground="White"/>
+        <Button x:Name="BCurrect" Content="Подтведрить" HorizontalAlignment="Center" Height="33" Margin="0,243,0,0" VerticalAlignment="Top" Width="112" BorderBrush="White" FontWeight="Bold" FontFamily="Arial" Click="BCurrect_Click"/>
+        <TextBox x:Name="TBNumber" HorizontalAlignment="Left" Height="34" Margin="59,74,0,0" VerticalAlignment="Top" Width="268" FontSize="24"/>
+        <Label x:Name="LNumber" Content="Ваш Номер" HorizontalAlignment="Left" Height="36" Margin="42,33,0,0" VerticalAlignment="Top" Width="101" Foreground="White"/>
     </Grid>
 </Window>

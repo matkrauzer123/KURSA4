@@ -26,49 +26,69 @@ namespace KURSA4.WinFolder
         {
             InitializeComponent();
         }
-        DataBase dataBase = new DataBase(); 
+        DataBase dataBase = new DataBase();
+        static int first = 0;
         private void BCurrect_Click(object sender, RoutedEventArgs e)
         {
             dataBase.sqlOpen();
             var passUser = PBPassword.Password;
-
+            var N = TBNumber.Text;
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            string query = $"select   PasswordEmployee from Employee where   PasswordEmployee = '{passUser}'";
+            string query = $"select   PasswordEmployee from Employee where   PasswordEmployee = '{passUser}' AND NumberEmployee = '{N}'";
             SqlCommand command = new SqlCommand(query, dataBase.GetConnection());
             sqlDataAdapter.SelectCommand = command;
 
-            
 
-            sqlDataAdapter.Fill(dt);
-            int a = dt.Rows.Count;
-            if (a==1)
+            try
             {
-                string query1 = $"select   NameEmployee from Employee where   PasswordEmployee = '{passUser}'";
-                SqlCommand command1 = new SqlCommand(query1, dataBase.GetConnection());
-                sqlDataAdapter.SelectCommand = command1;
-                string name = (string)command1.ExecuteScalar();
-                query = $"insert into [End](NameEnd,SumEnd) values('{name}',0)";
-                SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlTrash;
-                sqlTrash.ExecuteNonQuery();
-               
-                MessageBox.Show("Начало", "Смена открыта",MessageBoxButton.OK,MessageBoxImage.Information);
-                Close();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Close();
-                WinOpen winOpen = new WinOpen();
-                winOpen.Show();
 
+
+
+                sqlDataAdapter.Fill(dt);
+                int a = dt.Rows.Count;
+                if (a == 1)
+                {
+                    string query1 = $"select   NameEmployee from Employee where   PasswordEmployee = '{passUser}' AND NumberEmployee = '{N}'";
+                    SqlCommand command1 = new SqlCommand(query1, dataBase.GetConnection());
+                    sqlDataAdapter.SelectCommand = command1;
+                    string name = (string)command1.ExecuteScalar();
+                    query = $"insert into [End](NameEnd,SumEnd) values('{name}',0)";
+                    SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
+                    sqlDataAdapter.SelectCommand = sqlTrash;
+                    sqlTrash.ExecuteNonQuery();
+
+                    MessageBox.Show("Начало", "Смена открыта", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (first == 0)
+                    {
+                        Close();
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Close();
+                        WinOpen winOpen = new WinOpen();
+                        winOpen.Show();
+                        first++;
+                    }
+                    else
+                    {
+                        Close();
+                    }
+
+
+                }
+
+                else
+                {
+                    MessageBox.Show("Неверный номер или пароль!!", "Проблема!!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
+                }
+                dataBase.sqlClose();
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Пароль неверный!!", "Проблема!!",MessageBoxButton.OK,MessageBoxImage.Error);
 
-               
+                MessageBox.Show("В номере только цифры", "Проблема!!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            dataBase.sqlClose();
-
 
 
 

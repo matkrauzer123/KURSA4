@@ -317,30 +317,41 @@ namespace KURSA4.WinFolder
                 writer.WriteLine($"\n\n\t\t Сумма: {LPrice.Content}");
             }
             database.sqlOpen();
-            int a = Convert.ToInt32( LPrice.Content);
-            MessageBox.Show("Заказ обработан!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
-            string query = $"UPDATE [End]SET SumEnd= SumEnd+{a}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
-            SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-            adapter.SelectCommand = sqlTrash;
-            sqlTrash.ExecuteNonQuery();
-            string del = $"Delete from Trash";
-            SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
-            adapter.SelectCommand = sqldel;
-            sqldel.ExecuteNonQuery();
-            string trash = $"Select * from Trash";
-            SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
-            adapter.SelectCommand = sqlTrash1;
+            try
+            {
+                int a = Convert.ToInt32(LPrice.Content);
+                MessageBox.Show("Заказ обработан!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
+                string query = $"UPDATE [End]SET SumEnd= SumEnd+{a}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                adapter.SelectCommand = sqlTrash;
+                sqlTrash.ExecuteNonQuery();
+                string del = $"Delete from Trash";
+                SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
+                adapter.SelectCommand = sqldel;
+                sqldel.ExecuteNonQuery();
+                string trash = $"Select * from Trash";
+                SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
+                adapter.SelectCommand = sqlTrash1;
 
-            LPrice.Content = 0;
-            adapter.Fill(dataTable);
-            dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
-            dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
-            dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
-            dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+                LPrice.Content = 0;
+                price = 0;
+                adapter.Fill(dataTable);
+                dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
+                dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
+                dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
+                dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
 
-            DGTrash.ItemsSource = dataTable.DefaultView;
-            dt.Rows.Clear();
-            database.sqlClose();
+                DGTrash.ItemsSource = dataTable.DefaultView;
+                dt.Rows.Clear();
+                database.sqlClose();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Корзина пуста!!", "Проблема!!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+           
+           
 
         }
 
@@ -506,6 +517,8 @@ namespace KURSA4.WinFolder
             database.sqlOpen();
             Button senderButton = sender as Button;
             DataRowView dataRowView = senderButton.DataContext as DataRowView;
+            price += (int)dataRowView["Цена"];
+            LPrice.Content = price;
             int id = Convert.ToInt32( dataRowView.Row["ID продукта"].ToString());
             int amount = Convert.ToInt32(dataRowView.Row["Количество"].ToString());
             string qadd = $"update Trash set AmountTrash={amount}+1 where IdTrash={id}";
@@ -531,8 +544,7 @@ namespace KURSA4.WinFolder
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
                 newRow["Количество"] = row["Количество"];
-                price += (int)newRow["Цена"];
-                LPrice.Content = price;
+              
 
                 dt.Rows.Add(newRow);
             }
@@ -605,7 +617,27 @@ namespace KURSA4.WinFolder
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-          
+            database.sqlOpen();
+            price = 0;
+            LPrice.Content = price;
+            string query = $"Delete from Trash";
+            DGTrash.ItemsSource = null;
+            SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+            adapter.SelectCommand = sqlTrash;
+            sqlTrash.ExecuteNonQuery();
+            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash from Trash", database.GetConnection());
+            database.sqlOpen();
+            dt.Columns.Clear();
+            adapter.Fill(dt);
+            dt.Columns[0].ColumnName = "ID продукта";
+            dt.Columns[1].ColumnName = "Название";
+            dt.Columns[2].ColumnName = "Цена";
+            dt.Columns[3].ColumnName = "Количество";
+            DGTrash.IsReadOnly = true;
+            DGTrash.ItemsSource = dt.DefaultView;
+            WinAdmin winAdmin = new WinAdmin();
+            winAdmin.ShowDialog();
+            database.sqlClose();
         }
     }
 }
