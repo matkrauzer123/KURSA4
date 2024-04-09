@@ -131,7 +131,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" Height="204" Margin="1618,0,0,809" VerticalAlignment="Bottom" Width="312" Click="Button_Click_2"/>
+        <Button Content="Новая Смена" HorizontalAlignment="Left" Height="257" Margin="1562,0,0,756" VerticalAlignment="Bottom" Width="368" Click="Button_Click_2" FontSize="36" FontFamily="Ebrima" FontWeight="Bold" BorderBrush="#FF00EDFF" Foreground="Black" Background="#FF7BAFF5"/>
 
     </Grid>
 </Window>

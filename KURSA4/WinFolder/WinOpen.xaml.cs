@@ -56,13 +56,14 @@ namespace KURSA4.WinFolder
 
         private void WinOpen1_Loaded(object sender, RoutedEventArgs e)
         {
-            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash from Trash", database.GetConnection());
+            adapter = new SqlDataAdapter("Select * from Trash", database.GetConnection());
             database.sqlOpen();
             adapter.Fill(dt);
             dt.Columns[0].ColumnName = "ID продукта";
             dt.Columns[1].ColumnName = "Название";
             dt.Columns[2].ColumnName = "Цена";
             dt.Columns[3].ColumnName = "Количество";
+            dt.Columns[4].ColumnName = "ID товара";
             DGTrash.IsReadOnly = true;
             DGTrash.ItemsSource = dt.DefaultView;
             MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
@@ -340,6 +341,8 @@ namespace KURSA4.WinFolder
                 dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
                 dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
                 dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+                dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
+
 
                 DGTrash.ItemsSource = dataTable.DefaultView;
                 dt.Rows.Clear();
@@ -455,10 +458,13 @@ namespace KURSA4.WinFolder
         private void listView1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             DataTable dataTable = new DataTable();
-            bool povtor = false;
-            database.sqlOpen();
-           
+            bool povtor = false;       
             var vid = (Vid)listView1.SelectedItem;
+            database.sqlOpen();
+            string query2 = $"select IdTools from Tools where NameTools='{vid.Name}'";
+            SqlCommand sqlTrashs = new SqlCommand(query2, database.GetConnection());
+            adapter.SelectCommand = sqlTrashs;
+           var s = (int)sqlTrashs.ExecuteScalar();
             foreach (DataRow row in dt.Rows)
             {
                 // Предполагаем, что ваш элемент имеет свойство Name для сравнения
@@ -478,7 +484,7 @@ namespace KURSA4.WinFolder
             }
             else
             {
-                string query1 = $"insert into Trash(NameTrash,PriceTrash,AmountTrash)values('{vid.Name}',{vid.Price},1)";
+                string query1 = $"insert into Trash(NameTrash,PriceTrash,AmountTrash,IdTools)values('{vid.Name}',{vid.Price},1,{s})";
                 SqlCommand sqlTrash = new SqlCommand(query1, database.GetConnection());
                 adapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();
@@ -494,6 +500,7 @@ namespace KURSA4.WinFolder
             dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
             dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
             dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+            dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
 
 
             DGTrash.ItemsSource = dataTable.DefaultView;
@@ -505,6 +512,7 @@ namespace KURSA4.WinFolder
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
                 newRow["Количество"] = row["Количество"];
+                newRow["ID товара"] = row["ID товара"];
 
                 dt.Rows.Add(newRow);
             }
@@ -534,6 +542,7 @@ namespace KURSA4.WinFolder
             dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
             dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
             dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+            dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
 
             DGTrash.ItemsSource = dataTable.DefaultView;
             dt.Rows.Clear();
@@ -544,7 +553,8 @@ namespace KURSA4.WinFolder
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
                 newRow["Количество"] = row["Количество"];
-              
+                newRow["ID товара"] = row["ID товара"];
+
 
                 dt.Rows.Add(newRow);
             }
@@ -597,7 +607,8 @@ namespace KURSA4.WinFolder
             dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
             dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
             dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
-            
+            dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
+
 
             DGTrash.ItemsSource = dataTable.DefaultView;
             dt.Rows.Clear();
@@ -607,7 +618,8 @@ namespace KURSA4.WinFolder
                 newRow["ID продукта"] = row["ID продукта"];
                 newRow["Название"] = row["Название"];
                 newRow["Цена"] = row["Цена"];
-                newRow["Количество"] = row["Количество"];             
+                newRow["Количество"] = row["Количество"];
+                newRow["ID товара"] = row["ID товара"];
                 dt.Rows.Add(newRow);
             }
 
@@ -633,6 +645,7 @@ namespace KURSA4.WinFolder
             dt.Columns[1].ColumnName = "Название";
             dt.Columns[2].ColumnName = "Цена";
             dt.Columns[3].ColumnName = "Количество";
+            dt.Columns[4].ColumnName = "ID товара";
             DGTrash.IsReadOnly = true;
             DGTrash.ItemsSource = dt.DefaultView;
             WinAdmin winAdmin = new WinAdmin();

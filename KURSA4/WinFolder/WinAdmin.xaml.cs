@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TopCar;
+using static KURSA4.WinFolder.WinOpen;
 
 namespace KURSA4.WinFolder
 {
@@ -49,11 +50,15 @@ namespace KURSA4.WinFolder
                 int a = dt.Rows.Count;
                 if (a == 1)
                 {
+                    string query2 = $"select   IdEmployee from Employee where   PasswordEmployee = '{passUser}' AND NumberEmployee = '{N}'";
+                    SqlCommand sqlTrashs = new SqlCommand(query2, dataBase.GetConnection());
+                    sqlDataAdapter.SelectCommand = sqlTrashs;
+                    var id = (int)sqlTrashs.ExecuteScalar();
                     string query1 = $"select   NameEmployee from Employee where   PasswordEmployee = '{passUser}' AND NumberEmployee = '{N}'";
                     SqlCommand command1 = new SqlCommand(query1, dataBase.GetConnection());
                     sqlDataAdapter.SelectCommand = command1;
                     string name = (string)command1.ExecuteScalar();
-                    query = $"insert into [End](NameEnd,SumEnd) values('{name}',0)";
+                    query = $"insert into [End](NameEnd,SumEnd,IdEmployee) values('{name}',0,{id})";
                     SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
                     sqlDataAdapter.SelectCommand = sqlTrash;
                     sqlTrash.ExecuteNonQuery();
