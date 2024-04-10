@@ -219,6 +219,7 @@ namespace KURSA4.WinFolder
             SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
             sqlDataAdapter.SelectCommand = sqlCommand;
             int stock1 = (int)sqlCommand.ExecuteScalar();
+           ;
 
             if (stock1 == 0)
             {
@@ -300,15 +301,15 @@ namespace KURSA4.WinFolder
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             nzakaza nzakaza = new nzakaza();
             int id = nzakaza.zzz;
+            string trash1 ="";
 
-            
-            string folderPath = System.IO.Path.Combine(desktopPath, $"Заказы");
+            string folderPath = System.IO.Path.Combine(desktopPath, $"Чеки");
 
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
-            string folder1Path = System.IO.Path.Combine(desktopPath, $@"Заказы\{DateTime.Now.ToShortDateString()} заказы");
+            string folder1Path = System.IO.Path.Combine(desktopPath, $@"Чеки\{DateTime.Now.ToShortDateString()} заказы");
 
             if (!Directory.Exists(folder1Path))
             {
@@ -336,6 +337,25 @@ namespace KURSA4.WinFolder
                 SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
                 adapter.SelectCommand = sqlTrash;
                 sqlTrash.ExecuteNonQuery();
+                string idtrash = $"Select MAX(IdBought) from Bought";
+                SqlCommand sqlTrash11= new SqlCommand(idtrash, database.GetConnection());
+                adapter.SelectCommand = sqlTrash11;
+                var idbought = sqlTrash11.ExecuteScalar();
+                
+                if (idbought!=DBNull.Value)
+                {
+                    int s = (int)idbought;
+                    s++;
+                    trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, IdBought) SELECT NameTrash, PriceTrash, AmountTrash, IdTools,{s}FROM trash";
+                }
+                else 
+                {
+                    trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, IdBought) SELECT NameTrash, PriceTrash, AmountTrash, IdTools, 1 FROM trash";
+                }
+                
+                SqlCommand sqlTrash2 = new SqlCommand(trash1, database.GetConnection());
+                adapter.SelectCommand = sqlTrash2;
+                sqlTrash2.ExecuteNonQuery();
                 string del = $"Delete from Trash";
                 SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
                 adapter.SelectCommand = sqldel;
