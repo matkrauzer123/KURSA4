@@ -299,21 +299,31 @@ namespace KURSA4.WinFolder
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             nzakaza nzakaza = new nzakaza();
-            int id = nzakaza.GetId();
+            int id = nzakaza.zzz;
 
-            string filePath = System.IO.Path.Combine(desktopPath, $"заказ №{id}.txt");
+            
+            string folderPath = System.IO.Path.Combine(desktopPath, $"Заказы");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string folder1Path = System.IO.Path.Combine(desktopPath, $@"Заказы\{DateTime.Now.ToShortDateString()} заказы");
+
+            if (!Directory.Exists(folder1Path))
+            {
+                Directory.CreateDirectory(folder1Path);
+            }
+            string filePath = System.IO.Path.Combine(folder1Path, $"заказ №{id}.txt");
             id++;
-            nzakaza.Setid(id);
-
-
-
+            nzakaza.zzz = id;
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 // Записываем текст в файл
                 foreach (DataRow row in dt.Rows)
                 {
 
-                    writer.WriteLine(row["Название"] + " - " + row["Цена"] + "р.");
+                    writer.WriteLine(row["Название"] + " - " + row["Количество"] + " шт." +" - " + row["Цена"] + "р.");
                 }
                 writer.WriteLine($"\n\n\t\t Сумма: {LPrice.Content}");
             }
@@ -336,6 +346,7 @@ namespace KURSA4.WinFolder
 
                 LPrice.Content = 0;
                 price = 0;
+               dataTable.Columns.Clear(); 
                 adapter.Fill(dataTable);
                 dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
                 dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
@@ -457,67 +468,74 @@ namespace KURSA4.WinFolder
 
         private void listView1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+
             DataTable dataTable = new DataTable();
             bool povtor = false;       
             var vid = (Vid)listView1.SelectedItem;
             database.sqlOpen();
-            string query2 = $"select IdTools from Tools where NameTools='{vid.Name}'";
-            SqlCommand sqlTrashs = new SqlCommand(query2, database.GetConnection());
-            adapter.SelectCommand = sqlTrashs;
-           var s = (int)sqlTrashs.ExecuteScalar();
-            foreach (DataRow row in dt.Rows)
+            if (vid == null)
             {
-                // Предполагаем, что ваш элемент имеет свойство Name для сравнения
-                if ((string)row["Название"] == vid.Name)
-                {
-                    povtor = true;
-                    break; // Нашли совпадение, выходим из цикла
-                }
-            }
-            if (povtor)
-            {
-                string qadd = $"update Trash set AmountTrash=AmountTrash+1 where NameTrash='{vid.Name}'";
-                SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
-                adapter.SelectCommand = sqladd;
-                sqladd.ExecuteNonQuery();
 
             }
             else
             {
-                string query1 = $"insert into Trash(NameTrash,PriceTrash,AmountTrash,IdTools)values('{vid.Name}',{vid.Price},1,{s})";
-                SqlCommand sqlTrash = new SqlCommand(query1, database.GetConnection());
-                adapter.SelectCommand = sqlTrash;
-                sqlTrash.ExecuteNonQuery();
-               
+                string query2 = $"select IdTools from Tools where NameTools='{vid.Name}'";
+                SqlCommand sqlTrashs = new SqlCommand(query2, database.GetConnection());
+                adapter.SelectCommand = sqlTrashs;
+                var s = (int)sqlTrashs.ExecuteScalar();
+                foreach (DataRow row in dt.Rows)
+                {
+                    // Предполагаем, что ваш элемент имеет свойство Name для сравнения
+                    if ((string)row["Название"] == vid.Name)
+                    {
+                        povtor = true;
+                        break; // Нашли совпадение, выходим из цикла
+                    }
+                }
+                if (povtor)
+                {
+                    string qadd = $"update Trash set AmountTrash=AmountTrash+1 where NameTrash='{vid.Name}'";
+                    SqlCommand sqladd = new SqlCommand(qadd, database.GetConnection());
+                    adapter.SelectCommand = sqladd;
+                    sqladd.ExecuteNonQuery();
+
+                }
+                else
+                {
+                    string query1 = $"insert into Trash(NameTrash,PriceTrash,AmountTrash,IdTools)values('{vid.Name}',{vid.Price},1,{s})";
+                    SqlCommand sqlTrash = new SqlCommand(query1, database.GetConnection());
+                    adapter.SelectCommand = sqlTrash;
+                    sqlTrash.ExecuteNonQuery();
+
+                }
+                price += (int)vid.Price;
+                LPrice.Content = price.ToString();
+                string trash = $"Select * from Trash";
+                SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
+                adapter.SelectCommand = sqlTrash1;
+                adapter.Fill(dataTable);
+                dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
+                dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
+                dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
+                dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
+                dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
+
+
+                DGTrash.ItemsSource = dataTable.DefaultView;
+                dt.Rows.Clear();
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    DataRow newRow = dt.NewRow();
+                    newRow["ID продукта"] = row["ID продукта"];
+                    newRow["Название"] = row["Название"];
+                    newRow["Цена"] = row["Цена"];
+                    newRow["Количество"] = row["Количество"];
+                    newRow["ID товара"] = row["ID товара"];
+
+                    dt.Rows.Add(newRow);
+                }
+                database.sqlClose();
             }
-            price += (int)vid.Price;
-            LPrice.Content = price.ToString();
-            string trash = $"Select * from Trash";
-            SqlCommand sqlTrash1 = new SqlCommand(trash, database.GetConnection());
-            adapter.SelectCommand = sqlTrash1;
-            adapter.Fill(dataTable);
-            dataTable.Columns[0].ColumnName = dt.Columns[0].ColumnName;
-            dataTable.Columns[1].ColumnName = dt.Columns[1].ColumnName;
-            dataTable.Columns[2].ColumnName = dt.Columns[2].ColumnName;
-            dataTable.Columns[3].ColumnName = dt.Columns[3].ColumnName;
-            dataTable.Columns[4].ColumnName = dt.Columns[4].ColumnName;
-
-
-            DGTrash.ItemsSource = dataTable.DefaultView;
-            dt.Rows.Clear();
-            foreach (DataRow row in dataTable.Rows)
-            {
-                DataRow newRow = dt.NewRow();
-                newRow["ID продукта"] = row["ID продукта"];
-                newRow["Название"] = row["Название"];
-                newRow["Цена"] = row["Цена"];
-                newRow["Количество"] = row["Количество"];
-                newRow["ID товара"] = row["ID товара"];
-
-                dt.Rows.Add(newRow);
-            }
-            database.sqlClose();
-
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -637,7 +655,7 @@ namespace KURSA4.WinFolder
             SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
             adapter.SelectCommand = sqlTrash;
             sqlTrash.ExecuteNonQuery();
-            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash from Trash", database.GetConnection());
+            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash,IdTools from Trash", database.GetConnection());
             database.sqlOpen();
             dt.Columns.Clear();
             adapter.Fill(dt);

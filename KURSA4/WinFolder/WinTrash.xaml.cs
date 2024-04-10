@@ -157,53 +157,23 @@ namespace KURSA4.WinFolder
 
         private void BBuy_Click(object sender, RoutedEventArgs e)
         {
-            if (dt.Rows.Count==0)
+            if (dt.Rows.Count == 0)
             {
-                MessageBox.Show("Вы ничего не заказали!!", "Проблема!",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("Вы ничего не заказали!!", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
             else
             {
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-               nzakaza nzakaza = new nzakaza();
-                int id = nzakaza.GetId();
-         
-                string filePath = System.IO.Path.Combine(desktopPath, $"заказ №{id}.txt");
-                id++;
-                nzakaza.Setid(id);
+                nzakaza nzakaza = new nzakaza();
 
 
-                
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    // Записываем текст в файл
-                    foreach (DataRow row in dt.Rows)
-                    {
-                       
-                        writer.WriteLine(row["Название"] + " - " + row["Цена"] + "р.");
-                    }
-                    writer.WriteLine($"\n\n\t\t Сумма: {LPriceFinal.Content}");
-                }
-                dataBase.sqlOpen();
-                MessageBox.Show("Спасибо за покупку!!!", "Чек сделан!", MessageBoxButton.OK, MessageBoxImage.Information);
-                string query = $"UPDATE [End]SET EndPrice= EndPrice+{(int)LPriceFinal.Content}WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
-                SqlCommand sqlTrash = new SqlCommand(query, dataBase.GetConnection());
-                adapter.SelectCommand = sqlTrash;
-                sqlTrash.ExecuteNonQuery();
-                string del = $"Delete from Trash";
-                SqlCommand sqldel = new SqlCommand(del, dataBase.GetConnection());
-                adapter.SelectCommand = sqldel;
-                sqldel.ExecuteNonQuery();
 
-                string query1 = $"update PriceUser set PriceUsers=0";
-                SqlCommand sqlTrash1 = new SqlCommand(query1, dataBase.GetConnection());
-                adapter.SelectCommand = sqlTrash1;
-                sqlTrash1.ExecuteNonQuery();
-                dataBase.sqlClose();
-                dataBase.sqlClose();
-                WinOpen winOpen = new WinOpen();
-                winOpen.Show();
-                Close();
+
+
+
+
+
             }
            
 
