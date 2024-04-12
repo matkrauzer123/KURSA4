@@ -116,7 +116,7 @@
             </DataGrid.RenderTransform>
 
         </DataGrid>
-        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1102" Loaded="ListView_Loaded" SelectionChanged="ListView_SelectionChanged_1" MouseDoubleClick="listView1_MouseDoubleClick" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp" FontFamily="Arial">
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1102" Loaded="ListView_Loaded" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp" FontFamily="Arial">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Изображение" Width="100">

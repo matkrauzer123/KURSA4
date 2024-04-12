@@ -77,8 +77,7 @@ namespace KURSA4.WinFolder
             LLabel.Content = "Сверлильный инструмент";
             ShowList("Сверлильный инструмент");
 
-            // Close();
-            //  winSverlInstrument.ShowDialog();
+            
         }
 
         private void MIRuchInstrument_Click(object sender, RoutedEventArgs e)
@@ -147,155 +146,6 @@ namespace KURSA4.WinFolder
             LLabel.Content = "Режущий инструмент";
             ShowList("Режущий инструмент");
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B40X1000_Click(object sender, RoutedEventArgs e)
-        {
-            database.sqlOpen();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            string query = "Select StockTools  from Tools  where IdTools='1'";
-            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            int stock1 = (int)sqlCommand.ExecuteScalar();
-
-            if (stock1 == 0)
-            {
-                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            else
-            {
-                stock1--;
-                DataTable dataTable = new DataTable();
-                query = $"update  Tools set StockTools ='{stock1}' where IdTools='1'";
-                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlCommandd;
-                sqlDataAdapter.Fill(dataTable);
-                DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash) values('Буры SDS MAX 40X1000','8319')";
-                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlTrash;
-
-                sqlDataAdapter.Fill(dataTable1);
-                DataTable dt = new DataTable();
-                query = $"update  PriceUser set PriceUsers =PriceUsers+8319";
-                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprice;
-                sqlDataAdapter.Fill(dt);
-
-                query = $"select  PriceUsers FROM PriceUser";
-                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprices;
-
-                var a = sqlprices.ExecuteScalar();
-                price = Convert.ToInt32(a);
-                LPrice.Content = price;
-
-            }
-
-
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B40X1000_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void B40X600_Click(object sender, RoutedEventArgs e)
-        {
-            database.sqlOpen();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            string query = "Select StockTools  from Tools  where IdTools='2'";
-            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            int stock1 = (int)sqlCommand.ExecuteScalar();
-           ;
-
-            if (stock1 == 0)
-            {
-                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            else
-            {
-                stock1--;
-                DataTable dataTable = new DataTable();
-                query = $"update  Tools set StockTools ='{stock1}' where IdTools='2'";
-                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlCommandd;
-                sqlDataAdapter.Fill(dataTable);
-                DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash) values('Буры SDS MAX 40Х600','5664')";
-                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlTrash;
-                sqlDataAdapter.Fill(dataTable1);
-                DataTable dt = new DataTable();
-                query = $"update  PriceUser set PriceUsers =PriceUsers+5664";
-                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprice;
-                sqlDataAdapter.Fill(dt);
-                query = $"select  PriceUsers FROM PriceUser";
-                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprices;
-
-                var a = sqlprices.ExecuteScalar();
-                price = Convert.ToInt32(a);
-                LPrice.Content = price;
-            }
-        }
-
-        private void BRulet_Click(object sender, RoutedEventArgs e)
-        {
-            database.sqlOpen();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            string query = "Select StockTools  from Tools  where IdTools='3'";
-            SqlCommand sqlCommand = new SqlCommand(query, database.GetConnection());
-            sqlDataAdapter.SelectCommand = sqlCommand;
-            int stock1 = (int)sqlCommand.ExecuteScalar();
-
-            if (stock1 == 0)
-            {
-                MessageBox.Show("Больше нет в наличии", "Проблема!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            else
-            {
-                stock1--;
-                DataTable dataTable = new DataTable();
-                query = $"update  Tools set StockTools ='{stock1}' where IdTools='3'";
-                SqlCommand sqlCommandd = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlCommandd;
-                sqlDataAdapter.Fill(dataTable);
-                DataTable dataTable1 = new DataTable();
-                query = $"insert into Trash(NameTrash,PriceTrash) values('РУЛЕТКА VERTEXTOOLS ','471')";
-                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlTrash;
-                sqlDataAdapter.Fill(dataTable1);
-                DataTable dt = new DataTable();
-                query = $"update  PriceUser set PriceUsers =PriceUsers+471";
-                SqlCommand sqlprice = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprice;
-                sqlDataAdapter.Fill(dt);
-                query = $"select  PriceUsers FROM PriceUser";
-                SqlCommand sqlprices = new SqlCommand(query, database.GetConnection());
-                sqlDataAdapter.SelectCommand = sqlprices;
-
-                var a = sqlprices.ExecuteScalar();
-                price = Convert.ToInt32(a);
-                LPrice.Content = price;
-            }
-        }
-
         private void BCheck_Click(object sender, RoutedEventArgs e)
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -405,30 +255,10 @@ namespace KURSA4.WinFolder
           
         }
 
-        private void TBPrice1_Копировать_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
             ShowList("Каталог");
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        }     
         private void ShowList(string katalog)
         {
             listView1.ItemsSource = null;
@@ -479,11 +309,6 @@ namespace KURSA4.WinFolder
         {
             LLabel.Content = "Хиты продаж";
             ShowList("Каталог");
-        }
-
-        private void listView1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
         private void listView1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -689,6 +514,11 @@ namespace KURSA4.WinFolder
             WinAdmin winAdmin = new WinAdmin();
             winAdmin.ShowDialog();
             database.sqlClose();
+        }
+
+        private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
