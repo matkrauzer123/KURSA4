@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KURSA4.WinFolder"
         mc:Ignorable="d"
-        Title="Авторизация" Height="316" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Авторизация" Height="346" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#FF210D6B">
-        <PasswordBox x:Name="PBPassword" HorizontalAlignment="Left" Height="34" Margin="59,168,0,0" VerticalAlignment="Top" Width="268" FontSize="24"/>
-        <Label Content="Ваш Пароль" HorizontalAlignment="Left" Height="36" Margin="42,0,0,0" VerticalAlignment="Center" Width="101" Foreground="White"/>
-        <Button x:Name="BCurrect" Content="Подтведрить" HorizontalAlignment="Center" Height="33" Margin="0,243,0,0" VerticalAlignment="Top" Width="112" BorderBrush="White" FontWeight="Bold" FontFamily="Arial" Click="BCurrect_Click"/>
-        <TextBox x:Name="TBNumber" HorizontalAlignment="Left" Height="34" Margin="59,74,0,0" VerticalAlignment="Top" Width="268" FontSize="24"/>
-        <Label x:Name="LNumber" Content="Ваш Номер" HorizontalAlignment="Left" Height="36" Margin="42,33,0,0" VerticalAlignment="Top" Width="101" Foreground="White"/>
+        <PasswordBox x:Name="PBPassword" HorizontalAlignment="Center" Height="34" Margin="0,153,0,0" VerticalAlignment="Top" Width="285" FontSize="24"/>
+        <Label Content="Ваш Пароль" HorizontalAlignment="Left" Height="36" Margin="208,117,0,0" VerticalAlignment="Top" Width="101" Foreground="White"/>
+        <Button x:Name="BCurrect" Content="Подтведрить" HorizontalAlignment="Center" Height="33" Margin="0,257,0,0" VerticalAlignment="Top" Width="112" BorderBrush="White" FontWeight="Bold" FontFamily="Arial" Click="BCurrect_Click"/>
+        <TextBox x:Name="TBNumber" HorizontalAlignment="Center" Height="34" Margin="0,59,0,0" VerticalAlignment="Top" Width="285" FontSize="24"/>
+        <Label x:Name="LNumber" Content="Ваш Номер" HorizontalAlignment="Left" Height="36" Margin="208,18,0,0" VerticalAlignment="Top" Width="101" Foreground="White"/>
     </Grid>
 </Window>

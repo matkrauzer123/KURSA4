@@ -85,7 +85,7 @@
         <Label x:Name="LLabel" Content="Хиты продаж" HorizontalAlignment="Left" Height="187" Margin="667,10,0,0" VerticalAlignment="Top" Width="1165" FontSize="66" Foreground="White" FontFamily="Arial"/>
         <Label x:Name="LPrice" Content="" HorizontalAlignment="Left" Height="62" Margin="1660,756,0,0" VerticalAlignment="Top" Width="200" FontSize="36" Foreground="#FF07FFB5" FontWeight="Bold" FontFamily="Arial" FontStyle="Italic"/>
         <Label Content="Сумма: " HorizontalAlignment="Left" Height="98" Margin="1510,756,0,0" VerticalAlignment="Top" Width="182" FontSize="36" Foreground="White" FontWeight="Bold" FontFamily="Arial"/>
-        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left"  Height="583" Margin="367,508,0,0" VerticalAlignment="Top" Width="1102" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" FontFamily="Arial" >
+        <DataGrid x:Name="DGTrash" HorizontalAlignment="Left"  Height="0" Margin="1568,104,0,0" VerticalAlignment="Top" Width="6" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF0080FF" Background="White" RenderTransformOrigin="0,0" HorizontalGridLinesBrush="#FF1D5BBF" VerticalGridLinesBrush="{x:Null}" GridLinesVisibility="None" CanUserResizeColumns="True" CanUserAddRows="False" SelectionChanged="DGTrash_SelectionChanged" FontSize="22" FontFamily="Arial" >
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn Header="Действие">
@@ -116,22 +116,29 @@
             </DataGrid.RenderTransform>
 
         </DataGrid>
-        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="322" Margin="367,153,0,0" VerticalAlignment="Top" Width="1102" Loaded="ListView_Loaded" PreviewMouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp" FontFamily="Arial">
+        <ListView x:Name="listView1" HorizontalAlignment="Left" Height="691" Margin="489,295,0,0" VerticalAlignment="Top" Width="820" Loaded="ListView_Loaded" FontFamily="Arial" MouseLeftButtonUp="listView1_PreviewMouseLeftButtonUp" SelectionChanged="listView1_SelectionChanged" FontSize="18">
             <ListView.View>
+               
                 <GridView>
-                    <GridViewColumn Header="Изображение" Width="100">
+                    
+                    <GridViewColumn Header="№ п/п" DisplayMemberBinding="{Binding IdTools}" Width="60"/>
+                    <GridViewColumn Header="Изображение" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding ImagePath}" Width="50" Height="50"/>
+                                <Image Source="{Binding ImagePath}" Width="130" Height="150"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="50"/>
+                    
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="300"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <GridViewColumn Header="Кол-во" DisplayMemberBinding="{Binding Amount}" Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Новая Смена" HorizontalAlignment="Left" Height="256" Margin="1536,0,0,655" VerticalAlignment="Bottom" Width="368" Click="Button_Click_2" FontSize="36" FontFamily="Arial" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="#FF3361BD"/>
+        <Button Content="Новая Смена" HorizontalAlignment="Left" Height="181" Margin="1660,0,0,834" VerticalAlignment="Bottom" Width="260" Click="Button_Click_2" FontSize="36" FontFamily="Arial" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="#FF3361BD"/>
+        <Button x:Name="BTrash" Content="Корзина" HorizontalAlignment="Left" Height="168" Margin="1621,0,0,381" VerticalAlignment="Bottom" Width="309" FontSize="36" FontFamily="Arial" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="White" Background="#FF3361BD" Click="BTrash_Click"/>
+        <TextBox x:Name="TBSearch" HorizontalAlignment="Left" Margin="397,202,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="568" Height="55" FontSize="48" FontFamily="Arial" Background="#FF6C8BC8" Foreground="White" BorderBrush="#FF547EFB" TextChanged="TBSearch_TextChanged" MouseDoubleClick="TBSearch_MouseDoubleClick"/>
 
     </Grid>
 </Window>
