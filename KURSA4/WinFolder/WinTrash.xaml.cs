@@ -187,7 +187,7 @@ namespace KURSA4.WinFolder
 
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
-          
+       
            
             Close();
             

@@ -586,38 +586,47 @@ namespace KURSA4.WinFolder
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            database.sqlOpen();      
-            string queryy = $"update [End] set DateEnd ='{DateTime.Today.Date.ToShortDateString()} ' WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
-            SqlCommand sqlTrashh = new SqlCommand(queryy, database.GetConnection());
-            adapter.SelectCommand = sqlTrashh;
-            sqlTrashh.ExecuteNonQuery();
-            string del = $"Delete from Trash";
-            SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
-            adapter.SelectCommand = sqldel;
-            sqldel.ExecuteNonQuery();
-            Stattiki.price = 0;
-            LPrice.Content = Stattiki.price;
-            string query = $"Delete from Trash";
-            DGTrash.ItemsSource = null;
-            SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
-            adapter.SelectCommand = sqlTrash;
-            sqlTrash.ExecuteNonQuery();
-            adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash,IdTools from Trash", database.GetConnection());
-            database.sqlOpen();
-            dt.Columns.Clear();
-            dt.Rows.Clear();
-            adapter.Fill(dt);
-            dt.Columns[0].ColumnName = "ID продукта";
-            dt.Columns[1].ColumnName = "Название";
-            dt.Columns[2].ColumnName = "Цена";
-            dt.Columns[3].ColumnName = "Количество";
-            dt.Columns[4].ColumnName = "ID товара";
-            DGTrash.IsReadOnly = true;
-            DGTrash.ItemsSource = dt.DefaultView;          
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
-            
-            database.sqlClose();
+            if (Stattiki.price != 0)
+            {
+                MessageBox.Show("Закончите покупку", "Проблема", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if(MessageBox.Show("Вы уверены, что хотите выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+
+
+                database.sqlOpen();
+                string queryy = $"update [End] set DateEnd ='{DateTime.Today.Date.ToShortDateString()} ' WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End])";
+                SqlCommand sqlTrashh = new SqlCommand(queryy, database.GetConnection());
+                adapter.SelectCommand = sqlTrashh;
+                sqlTrashh.ExecuteNonQuery();
+                string del = $"Delete from Trash";
+                SqlCommand sqldel = new SqlCommand(del, database.GetConnection());
+                adapter.SelectCommand = sqldel;
+                sqldel.ExecuteNonQuery();
+                Stattiki.price = 0;
+                LPrice.Content = Stattiki.price;
+                string query = $"Delete from Trash";
+                DGTrash.ItemsSource = null;
+                SqlCommand sqlTrash = new SqlCommand(query, database.GetConnection());
+                adapter.SelectCommand = sqlTrash;
+                sqlTrash.ExecuteNonQuery();
+                adapter = new SqlDataAdapter("Select IdTrash,NameTrash,PriceTrash,AmountTrash,IdTools from Trash", database.GetConnection());
+                database.sqlOpen();
+                dt.Columns.Clear();
+                dt.Rows.Clear();
+                adapter.Fill(dt);
+                dt.Columns[0].ColumnName = "ID продукта";
+                dt.Columns[1].ColumnName = "Название";
+                dt.Columns[2].ColumnName = "Цена";
+                dt.Columns[3].ColumnName = "Количество";
+                dt.Columns[4].ColumnName = "ID товара";
+                DGTrash.IsReadOnly = true;
+                DGTrash.ItemsSource = dt.DefaultView;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ShowDialog();
+
+                database.sqlClose();
+            }
         }
 
         private void DGTrash_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -646,7 +655,19 @@ namespace KURSA4.WinFolder
                
                 WinTrash winTrash = new WinTrash();
                 winTrash.ShowDialog();
-               
+                adapter = new SqlDataAdapter("Select * from Trash", database.GetConnection());
+                database.sqlOpen();
+                adapter.Fill(dt);
+                dt.Columns[0].ColumnName = "ID продукта";
+                dt.Columns[1].ColumnName = "Название";
+                dt.Columns[2].ColumnName = "Цена";
+                dt.Columns[3].ColumnName = "Количество";
+                dt.Columns[4].ColumnName = "ID товара";
+                DGTrash.IsReadOnly = true;
+                DGTrash.ItemsSource = dt.DefaultView;
+                LPrice.Content = Stattiki.price;
+                MIStroitOtdelInstrument.Header = "Строительно-отделочный \n инструмент";
+
             }
         }
 
