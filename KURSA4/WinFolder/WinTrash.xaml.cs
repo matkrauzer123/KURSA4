@@ -187,7 +187,10 @@ namespace KURSA4.WinFolder
 
         private void BBack_Click(object sender, RoutedEventArgs e)
         {
+          
+           
             Close();
+            
         }
 
         private void BDelete_Click(object sender, RoutedEventArgs e)
@@ -225,5 +228,11 @@ namespace KURSA4.WinFolder
         
 
     }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+          
+          
+        }
     }
 }

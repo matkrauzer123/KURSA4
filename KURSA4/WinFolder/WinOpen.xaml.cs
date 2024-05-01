@@ -180,8 +180,9 @@ namespace KURSA4.WinFolder
                 nzakaza.zzz = id;
                 while (File.Exists(filePath))
                 {
-                    id++;
+                   
                     filePath = System.IO.Path.Combine(folder1Path, $"заказ №{id}.txt");
+                    id++;
                 }
                
                 using (StreamWriter writer = new StreamWriter(filePath))
@@ -207,16 +208,20 @@ namespace KURSA4.WinFolder
                     SqlCommand sqlTrash11 = new SqlCommand(idtrash, database.GetConnection());
                     adapter.SelectCommand = sqlTrash11;
                     var idbought = sqlTrash11.ExecuteScalar();
+                    string idtrassh = $"Select IdEmployee from [End] WHERE IdEnd = (SELECT MAX(IdEnd) FROM [End]) ";
+                    SqlCommand sqlTrash111 = new SqlCommand(idtrassh, database.GetConnection());
+                    adapter.SelectCommand = sqlTrash111;
+                    var t1 = sqlTrash111.ExecuteScalar();
 
                     if (idbought != DBNull.Value)
                     {
                         int s = (int)idbought;
                         s++;
-                        trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, NumberBought) SELECT NameTrash, PriceTrash, AmountTrash, IdTools,{s}FROM trash";
+                        trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, NumberBought,IdEmployee) SELECT NameTrash, PriceTrash, AmountTrash, IdTools,{s},{t1} FROM trash";
                     }
                     else
                     {
-                        trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, NumberBought) SELECT NameTrash, PriceTrash, AmountTrash, IdTools, 1 FROM trash";
+                        trash1 = $"INSERT INTO Bought (NameBought, PriceBought, AmountBought, IdTools, NumberBought,IdEmployee) SELECT NameTrash, PriceTrash, AmountTrash, IdTools, 1,{t1} FROM trash";
                     }
 
                     SqlCommand sqlTrash2 = new SqlCommand(trash1, database.GetConnection());
@@ -638,19 +643,10 @@ namespace KURSA4.WinFolder
 
                 dt.Rows.Clear();
 
+               
                 WinTrash winTrash = new WinTrash();
                 winTrash.ShowDialog();
-                LPrice.Content = Stattiki.price.ToString();
-                adapter = new SqlDataAdapter("Select * from Trash", database.GetConnection());
-                database.sqlOpen();
-                adapter.Fill(dt);
-                dt.Columns[0].ColumnName = "ID продукта";
-                dt.Columns[1].ColumnName = "Название";
-                dt.Columns[2].ColumnName = "Цена";
-                dt.Columns[3].ColumnName = "Количество";
-                dt.Columns[4].ColumnName = "ID товара";
-                DGTrash.IsReadOnly = true;
-                DGTrash.ItemsSource = dt.DefaultView;
+               
             }
         }
 
@@ -705,6 +701,23 @@ namespace KURSA4.WinFolder
         private void TBSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             TBSearch.Text = null;
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            database.sqlOpen();
+            // Получить выбранный элемент
+            var selectedItem = (Vid)listView1.SelectedItem;
+
+            string queryy = $"Select InfoTools  from Tools Where NameTools ='{selectedItem.Name}'";
+            SqlCommand sqlTrashh = new SqlCommand(queryy, database.GetConnection());
+            adapter.SelectCommand = sqlTrashh;
+            var info = sqlTrashh.ExecuteScalar();
+            MessageBox.Show($"{info}", "Информация!", MessageBoxButton.OK,MessageBoxImage.Information);
+            // Присвоить переменным значения строк
+            string name = selectedItem.Name;
+           
+            database.sqlClose();
+            // Выполнить необходимые действия с этими переменными
         }
 
     }

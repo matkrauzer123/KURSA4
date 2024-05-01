@@ -10,7 +10,7 @@ namespace TopCar
 {
     internal class DataBase
     {
-        SqlConnection sql = new SqlConnection(@"Data Source =DESKTOP-CFKRE89;Initial Catalog=qq; Integrated Security=True");
+        SqlConnection sql = new SqlConnection(@"Data Source =MATTHEWTHEFXCKE;Initial Catalog=q; Integrated Security=True");
         public void sqlOpen()
         {
             if (sql.State == System.Data.ConnectionState.Closed)
